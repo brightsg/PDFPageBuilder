@@ -10,6 +10,36 @@
 		ABD251891A4994DD00BB4BFC /* TSPageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251881A4994DD00BB4BFC /* TSPageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABD2518F1A4994DD00BB4BFC /* TSPageBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* TSPageBuilder.framework */; };
 		ABD251961A4994DD00BB4BFC /* TSPageBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251951A4994DD00BB4BFC /* TSPageBuilderTests.m */; };
+		ABD251AE1A4995DF00BB4BFC /* TSPageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD2519F1A4995DF00BB4BFC /* TSPageBuilder.m */; };
+		ABD251AF1A4995DF00BB4BFC /* TSPageDoubleAggregator.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251A01A4995DF00BB4BFC /* TSPageDoubleAggregator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251B01A4995DF00BB4BFC /* TSPageDoubleAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251A11A4995DF00BB4BFC /* TSPageDoubleAggregator.m */; };
+		ABD251B11A4995DF00BB4BFC /* TSPageImageItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251A21A4995DF00BB4BFC /* TSPageImageItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251B21A4995DF00BB4BFC /* TSPageImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251A31A4995DF00BB4BFC /* TSPageImageItem.m */; };
+		ABD251B31A4995DF00BB4BFC /* TSPageItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251A41A4995DF00BB4BFC /* TSPageItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251B41A4995DF00BB4BFC /* TSPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251A51A4995DF00BB4BFC /* TSPageItem.m */; };
+		ABD251B51A4995DF00BB4BFC /* TSPageSpacingAggregator.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251A61A4995DF00BB4BFC /* TSPageSpacingAggregator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251B61A4995DF00BB4BFC /* TSPageSpacingAggregator.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251A71A4995DF00BB4BFC /* TSPageSpacingAggregator.m */; };
+		ABD251B71A4995DF00BB4BFC /* TSPageTextItem.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251A81A4995DF00BB4BFC /* TSPageTextItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251B81A4995DF00BB4BFC /* TSPageTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251A91A4995DF00BB4BFC /* TSPageTextItem.m */; };
+		ABD251B91A4995DF00BB4BFC /* TSPDFDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251AA1A4995DF00BB4BFC /* TSPDFDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251BA1A4995DF00BB4BFC /* TSPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251AB1A4995DF00BB4BFC /* TSPDFDocument.m */; };
+		ABD251BB1A4995DF00BB4BFC /* TSPDFPage.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251AC1A4995DF00BB4BFC /* TSPDFPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251BC1A4995DF00BB4BFC /* TSPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251AD1A4995DF00BB4BFC /* TSPDFPage.m */; };
+		ABD251CC1A4995F300BB4BFC /* NSAttributedString+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251BE1A4995F300BB4BFC /* NSAttributedString+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251CD1A4995F300BB4BFC /* NSAttributedString+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251BF1A4995F300BB4BFC /* NSAttributedString+PageBuilder.m */; };
+		ABD251CE1A4995F300BB4BFC /* NSColor+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251C01A4995F300BB4BFC /* NSColor+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251CF1A4995F300BB4BFC /* NSColor+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251C11A4995F300BB4BFC /* NSColor+PageBuilder.m */; };
+		ABD251D01A4995F300BB4BFC /* NSDate+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251C21A4995F300BB4BFC /* NSDate+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251D11A4995F300BB4BFC /* NSDate+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251C31A4995F300BB4BFC /* NSDate+PageBuilder.m */; };
+		ABD251D21A4995F300BB4BFC /* NSMutableArray+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251C41A4995F300BB4BFC /* NSMutableArray+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251D31A4995F300BB4BFC /* NSMutableArray+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251C51A4995F300BB4BFC /* NSMutableArray+PageBuilder.m */; };
+		ABD251D41A4995F300BB4BFC /* NSRegularExpression+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251C61A4995F300BB4BFC /* NSRegularExpression+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251D51A4995F300BB4BFC /* NSRegularExpression+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251C71A4995F300BB4BFC /* NSRegularExpression+PageBuilder.m */; };
+		ABD251D61A4995F300BB4BFC /* NSString+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251C81A4995F300BB4BFC /* NSString+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251D71A4995F300BB4BFC /* NSString+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251C91A4995F300BB4BFC /* NSString+PageBuilder.m */; };
+		ABD251D81A4995F300BB4BFC /* NSXMLElement+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD251CA1A4995F300BB4BFC /* NSXMLElement+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABD251D91A4995F300BB4BFC /* NSXMLElement+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251CB1A4995F300BB4BFC /* NSXMLElement+PageBuilder.m */; };
+		ABD251DB1A49969C00BB4BFC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251DA1A49969C00BB4BFC /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +59,36 @@
 		ABD2518E1A4994DD00BB4BFC /* TSPageBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSPageBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD251941A4994DD00BB4BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABD251951A4994DD00BB4BFC /* TSPageBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPageBuilderTests.m; sourceTree = "<group>"; };
+		ABD2519F1A4995DF00BB4BFC /* TSPageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageBuilder.m; sourceTree = "<group>"; };
+		ABD251A01A4995DF00BB4BFC /* TSPageDoubleAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageDoubleAggregator.h; sourceTree = "<group>"; };
+		ABD251A11A4995DF00BB4BFC /* TSPageDoubleAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageDoubleAggregator.m; sourceTree = "<group>"; };
+		ABD251A21A4995DF00BB4BFC /* TSPageImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageImageItem.h; sourceTree = "<group>"; };
+		ABD251A31A4995DF00BB4BFC /* TSPageImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageImageItem.m; sourceTree = "<group>"; };
+		ABD251A41A4995DF00BB4BFC /* TSPageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageItem.h; sourceTree = "<group>"; };
+		ABD251A51A4995DF00BB4BFC /* TSPageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageItem.m; sourceTree = "<group>"; };
+		ABD251A61A4995DF00BB4BFC /* TSPageSpacingAggregator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageSpacingAggregator.h; sourceTree = "<group>"; };
+		ABD251A71A4995DF00BB4BFC /* TSPageSpacingAggregator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageSpacingAggregator.m; sourceTree = "<group>"; };
+		ABD251A81A4995DF00BB4BFC /* TSPageTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageTextItem.h; sourceTree = "<group>"; };
+		ABD251A91A4995DF00BB4BFC /* TSPageTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageTextItem.m; sourceTree = "<group>"; };
+		ABD251AA1A4995DF00BB4BFC /* TSPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPDFDocument.h; sourceTree = "<group>"; };
+		ABD251AB1A4995DF00BB4BFC /* TSPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPDFDocument.m; sourceTree = "<group>"; };
+		ABD251AC1A4995DF00BB4BFC /* TSPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPDFPage.h; sourceTree = "<group>"; };
+		ABD251AD1A4995DF00BB4BFC /* TSPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPDFPage.m; sourceTree = "<group>"; };
+		ABD251BE1A4995F300BB4BFC /* NSAttributedString+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251BF1A4995F300BB4BFC /* NSAttributedString+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251C01A4995F300BB4BFC /* NSColor+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251C11A4995F300BB4BFC /* NSColor+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251C21A4995F300BB4BFC /* NSDate+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251C31A4995F300BB4BFC /* NSDate+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251C41A4995F300BB4BFC /* NSMutableArray+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251C51A4995F300BB4BFC /* NSMutableArray+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251C61A4995F300BB4BFC /* NSRegularExpression+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251C71A4995F300BB4BFC /* NSRegularExpression+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251C81A4995F300BB4BFC /* NSString+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251C91A4995F300BB4BFC /* NSString+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251CA1A4995F300BB4BFC /* NSXMLElement+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLElement+PageBuilder.h"; sourceTree = "<group>"; };
+		ABD251CB1A4995F300BB4BFC /* NSXMLElement+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+PageBuilder.m"; sourceTree = "<group>"; };
+		ABD251DA1A49969C00BB4BFC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD251DB1A49969C00BB4BFC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +114,7 @@
 		ABD251791A4994DD00BB4BFC = {
 			isa = PBXGroup;
 			children = (
+				ABD251DA1A49969C00BB4BFC /* Cocoa.framework */,
 				ABD251851A4994DD00BB4BFC /* TSPageBuilder */,
 				ABD251921A4994DD00BB4BFC /* TSPageBuilderTests */,
 				ABD251841A4994DD00BB4BFC /* Products */,
@@ -71,6 +133,22 @@
 		ABD251851A4994DD00BB4BFC /* TSPageBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				ABD251BD1A4995F300BB4BFC /* Categories */,
+				ABD2519F1A4995DF00BB4BFC /* TSPageBuilder.m */,
+				ABD251A01A4995DF00BB4BFC /* TSPageDoubleAggregator.h */,
+				ABD251A11A4995DF00BB4BFC /* TSPageDoubleAggregator.m */,
+				ABD251A21A4995DF00BB4BFC /* TSPageImageItem.h */,
+				ABD251A31A4995DF00BB4BFC /* TSPageImageItem.m */,
+				ABD251A41A4995DF00BB4BFC /* TSPageItem.h */,
+				ABD251A51A4995DF00BB4BFC /* TSPageItem.m */,
+				ABD251A61A4995DF00BB4BFC /* TSPageSpacingAggregator.h */,
+				ABD251A71A4995DF00BB4BFC /* TSPageSpacingAggregator.m */,
+				ABD251A81A4995DF00BB4BFC /* TSPageTextItem.h */,
+				ABD251A91A4995DF00BB4BFC /* TSPageTextItem.m */,
+				ABD251AA1A4995DF00BB4BFC /* TSPDFDocument.h */,
+				ABD251AB1A4995DF00BB4BFC /* TSPDFDocument.m */,
+				ABD251AC1A4995DF00BB4BFC /* TSPDFPage.h */,
+				ABD251AD1A4995DF00BB4BFC /* TSPDFPage.m */,
 				ABD251881A4994DD00BB4BFC /* TSPageBuilder.h */,
 				ABD251861A4994DD00BB4BFC /* Supporting Files */,
 			);
@@ -102,6 +180,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		ABD251BD1A4995F300BB4BFC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ABD251BE1A4995F300BB4BFC /* NSAttributedString+PageBuilder.h */,
+				ABD251BF1A4995F300BB4BFC /* NSAttributedString+PageBuilder.m */,
+				ABD251C01A4995F300BB4BFC /* NSColor+PageBuilder.h */,
+				ABD251C11A4995F300BB4BFC /* NSColor+PageBuilder.m */,
+				ABD251C21A4995F300BB4BFC /* NSDate+PageBuilder.h */,
+				ABD251C31A4995F300BB4BFC /* NSDate+PageBuilder.m */,
+				ABD251C41A4995F300BB4BFC /* NSMutableArray+PageBuilder.h */,
+				ABD251C51A4995F300BB4BFC /* NSMutableArray+PageBuilder.m */,
+				ABD251C61A4995F300BB4BFC /* NSRegularExpression+PageBuilder.h */,
+				ABD251C71A4995F300BB4BFC /* NSRegularExpression+PageBuilder.m */,
+				ABD251C81A4995F300BB4BFC /* NSString+PageBuilder.h */,
+				ABD251C91A4995F300BB4BFC /* NSString+PageBuilder.m */,
+				ABD251CA1A4995F300BB4BFC /* NSXMLElement+PageBuilder.h */,
+				ABD251CB1A4995F300BB4BFC /* NSXMLElement+PageBuilder.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,6 +208,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD251B11A4995DF00BB4BFC /* TSPageImageItem.h in Headers */,
+				ABD251D61A4995F300BB4BFC /* NSString+PageBuilder.h in Headers */,
+				ABD251CC1A4995F300BB4BFC /* NSAttributedString+PageBuilder.h in Headers */,
+				ABD251CE1A4995F300BB4BFC /* NSColor+PageBuilder.h in Headers */,
+				ABD251B31A4995DF00BB4BFC /* TSPageItem.h in Headers */,
+				ABD251B71A4995DF00BB4BFC /* TSPageTextItem.h in Headers */,
+				ABD251D81A4995F300BB4BFC /* NSXMLElement+PageBuilder.h in Headers */,
+				ABD251B91A4995DF00BB4BFC /* TSPDFDocument.h in Headers */,
+				ABD251AF1A4995DF00BB4BFC /* TSPageDoubleAggregator.h in Headers */,
+				ABD251D41A4995F300BB4BFC /* NSRegularExpression+PageBuilder.h in Headers */,
+				ABD251B51A4995DF00BB4BFC /* TSPageSpacingAggregator.h in Headers */,
+				ABD251BB1A4995DF00BB4BFC /* TSPDFPage.h in Headers */,
+				ABD251D01A4995F300BB4BFC /* NSDate+PageBuilder.h in Headers */,
+				ABD251D21A4995F300BB4BFC /* NSMutableArray+PageBuilder.h in Headers */,
 				ABD251891A4994DD00BB4BFC /* TSPageBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +322,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD251D31A4995F300BB4BFC /* NSMutableArray+PageBuilder.m in Sources */,
+				ABD251D91A4995F300BB4BFC /* NSXMLElement+PageBuilder.m in Sources */,
+				ABD251B21A4995DF00BB4BFC /* TSPageImageItem.m in Sources */,
+				ABD251D71A4995F300BB4BFC /* NSString+PageBuilder.m in Sources */,
+				ABD251AE1A4995DF00BB4BFC /* TSPageBuilder.m in Sources */,
+				ABD251CD1A4995F300BB4BFC /* NSAttributedString+PageBuilder.m in Sources */,
+				ABD251B41A4995DF00BB4BFC /* TSPageItem.m in Sources */,
+				ABD251B81A4995DF00BB4BFC /* TSPageTextItem.m in Sources */,
+				ABD251BC1A4995DF00BB4BFC /* TSPDFPage.m in Sources */,
+				ABD251B01A4995DF00BB4BFC /* TSPageDoubleAggregator.m in Sources */,
+				ABD251CF1A4995F300BB4BFC /* NSColor+PageBuilder.m in Sources */,
+				ABD251B61A4995DF00BB4BFC /* TSPageSpacingAggregator.m in Sources */,
+				ABD251D51A4995F300BB4BFC /* NSRegularExpression+PageBuilder.m in Sources */,
+				ABD251D11A4995F300BB4BFC /* NSDate+PageBuilder.m in Sources */,
+				ABD251BA1A4995DF00BB4BFC /* TSPDFDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +393,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -303,9 +432,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

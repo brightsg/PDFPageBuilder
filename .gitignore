@@ -1,0 +1,25 @@
+# mac
+.DS_Store
+
+# xcode
+*.swp
+*~.nib
+ 
+build/
+ 
+*.pbxuser
+*.perspective
+*.perspectivev3
+ 
+*.mode1v3
+*.mode2v3
+ 
+Documentation/Generated
+doxygenWarnings.txt
+xcuserdata
+
+# Visual studio
+build/
+bld/
+[Bb]in/
+[Oo]bj/
