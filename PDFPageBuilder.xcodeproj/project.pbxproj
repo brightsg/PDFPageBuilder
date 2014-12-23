@@ -10,9 +10,20 @@
 		ABD2518F1A4994DD00BB4BFC /* PDFPageBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */; };
 		ABD251961A4994DD00BB4BFC /* PDFPageBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251951A4994DD00BB4BFC /* PDFPageBuilderTests.m */; };
 		ABD251DB1A49969C00BB4BFC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251DA1A49969C00BB4BFC /* Cocoa.framework */; };
+		ABD42A241A49F27F00870D65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD42A231A49F27F00870D65 /* AppDelegate.m */; };
+		ABD42A261A49F27F00870D65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD42A251A49F27F00870D65 /* main.m */; };
+		ABD42A281A49F27F00870D65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD42A271A49F27F00870D65 /* Images.xcassets */; };
+		ABD42A2B1A49F27F00870D65 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD42A291A49F27F00870D65 /* MainMenu.xib */; };
+		ABD42A371A49F27F00870D65 /* PageBuilderDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD42A361A49F27F00870D65 /* PageBuilderDemoTests.m */; };
+		ABD42A3E1A49F2C800870D65 /* PDFPageBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */; };
+		ABD42A401A49F2EB00870D65 /* PDFPageBuilder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ABD42A421A49F3D200870D65 /* Demo-A4.map.xml in Resources */ = {isa = PBXBuildFile; fileRef = ABD42A411A49F3D200870D65 /* Demo-A4.map.xml */; };
+		ABD42A441A49F3F900870D65 /* Demo-A4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = ABD42A431A49F3F900870D65 /* Demo-A4.pdf */; };
+		ABD42A471A49FB8600870D65 /* DemoPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD42A461A49FB8600870D65 /* DemoPDFDocument.m */; };
+		ABD42A491A4A073C00870D65 /* DemoLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ABD42A481A4A073C00870D65 /* DemoLogo.jpeg */; };
 		ABF40C131A49B8D30070368E /* NSAttributedString+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF40BF41A49B8D30070368E /* NSAttributedString+PageBuilder.h */; };
 		ABF40C141A49B8D30070368E /* NSAttributedString+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF40BF51A49B8D30070368E /* NSAttributedString+PageBuilder.m */; };
-		ABF40C151A49B8D30070368E /* NSColor+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF40BF61A49B8D30070368E /* NSColor+PageBuilder.h */; };
+		ABF40C151A49B8D30070368E /* NSColor+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF40BF61A49B8D30070368E /* NSColor+PageBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABF40C161A49B8D30070368E /* NSColor+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF40BF71A49B8D30070368E /* NSColor+PageBuilder.m */; };
 		ABF40C171A49B8D30070368E /* NSDate+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF40BF81A49B8D30070368E /* NSDate+PageBuilder.h */; };
 		ABF40C181A49B8D30070368E /* NSDate+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF40BF91A49B8D30070368E /* NSDate+PageBuilder.m */; };
@@ -51,7 +62,27 @@
 			remoteGlobalIDString = ABD251821A4994DD00BB4BFC;
 			remoteInfo = TSPageBuilder;
 		};
+		ABD42A311A49F27F00870D65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABD2517A1A4994DD00BB4BFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABD42A1D1A49F27F00870D65;
+			remoteInfo = PageBuilderDemo;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ABD42A3F1A49F2DB00870D65 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ABD42A401A49F2EB00870D65 /* PDFPageBuilder.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDFPageBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +90,21 @@
 		ABD251941A4994DD00BB4BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../PDFPageBuilderTests/Info.plist; sourceTree = "<group>"; };
 		ABD251951A4994DD00BB4BFC /* PDFPageBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDFPageBuilderTests.m; path = ../PDFPageBuilderTests/PDFPageBuilderTests.m; sourceTree = "<group>"; };
 		ABD251DA1A49969C00BB4BFC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		ABD42A1E1A49F27F00870D65 /* PageBuilderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageBuilderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD42A211A49F27F00870D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABD42A221A49F27F00870D65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABD42A231A49F27F00870D65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABD42A251A49F27F00870D65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABD42A271A49F27F00870D65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ABD42A2A1A49F27F00870D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		ABD42A301A49F27F00870D65 /* PageBuilderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PageBuilderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD42A351A49F27F00870D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABD42A361A49F27F00870D65 /* PageBuilderDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageBuilderDemoTests.m; sourceTree = "<group>"; };
+		ABD42A411A49F3D200870D65 /* Demo-A4.map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Demo-A4.map.xml"; sourceTree = "<group>"; };
+		ABD42A431A49F3F900870D65 /* Demo-A4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Demo-A4.pdf"; sourceTree = "<group>"; };
+		ABD42A451A49FB8600870D65 /* DemoPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoPDFDocument.h; sourceTree = "<group>"; };
+		ABD42A461A49FB8600870D65 /* DemoPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoPDFDocument.m; sourceTree = "<group>"; };
+		ABD42A481A4A073C00870D65 /* DemoLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DemoLogo.jpeg; sourceTree = "<group>"; };
 		ABF40BF41A49B8D30070368E /* NSAttributedString+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+PageBuilder.h"; sourceTree = "<group>"; };
 		ABF40BF51A49B8D30070368E /* NSAttributedString+PageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+PageBuilder.m"; sourceTree = "<group>"; };
 		ABF40BF61A49B8D30070368E /* NSColor+PageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+PageBuilder.h"; sourceTree = "<group>"; };
@@ -110,6 +156,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ABD42A1B1A49F27F00870D65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD42A3E1A49F2C800870D65 /* PDFPageBuilder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD42A2D1A49F27F00870D65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -119,6 +180,8 @@
 				ABF40BF21A49B8D30070368E /* PDFPageBuilder */,
 				ABD251DA1A49969C00BB4BFC /* Cocoa.framework */,
 				ABD251921A4994DD00BB4BFC /* PDFPageBuilderTests */,
+				ABD42A1F1A49F27F00870D65 /* PageBuilderDemo */,
+				ABD42A331A49F27F00870D65 /* PageBuilderDemoTests */,
 				ABD251841A4994DD00BB4BFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,6 +191,8 @@
 			children = (
 				ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */,
 				ABD2518E1A4994DD00BB4BFC /* PDFPageBuilderTests.xctest */,
+				ABD42A1E1A49F27F00870D65 /* PageBuilderDemo.app */,
+				ABD42A301A49F27F00870D65 /* PageBuilderDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +211,49 @@
 			isa = PBXGroup;
 			children = (
 				ABD251941A4994DD00BB4BFC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABD42A1F1A49F27F00870D65 /* PageBuilderDemo */ = {
+			isa = PBXGroup;
+			children = (
+				ABD42A481A4A073C00870D65 /* DemoLogo.jpeg */,
+				ABD42A451A49FB8600870D65 /* DemoPDFDocument.h */,
+				ABD42A461A49FB8600870D65 /* DemoPDFDocument.m */,
+				ABD42A431A49F3F900870D65 /* Demo-A4.pdf */,
+				ABD42A411A49F3D200870D65 /* Demo-A4.map.xml */,
+				ABD42A221A49F27F00870D65 /* AppDelegate.h */,
+				ABD42A231A49F27F00870D65 /* AppDelegate.m */,
+				ABD42A271A49F27F00870D65 /* Images.xcassets */,
+				ABD42A291A49F27F00870D65 /* MainMenu.xib */,
+				ABD42A201A49F27F00870D65 /* Supporting Files */,
+			);
+			path = PageBuilderDemo;
+			sourceTree = "<group>";
+		};
+		ABD42A201A49F27F00870D65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABD42A211A49F27F00870D65 /* Info.plist */,
+				ABD42A251A49F27F00870D65 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABD42A331A49F27F00870D65 /* PageBuilderDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABD42A361A49F27F00870D65 /* PageBuilderDemoTests.m */,
+				ABD42A341A49F27F00870D65 /* Supporting Files */,
+			);
+			path = PageBuilderDemoTests;
+			sourceTree = "<group>";
+		};
+		ABD42A341A49F27F00870D65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABD42A351A49F27F00870D65 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,12 +318,12 @@
 				ABF40C301A49B8D30070368E /* TSPDFPage.h in Headers */,
 				ABF40C331A49B9DE0070368E /* PDFPageBuilder.h in Headers */,
 				ABF40C2E1A49B8D30070368E /* TSPDFDocument.h in Headers */,
+				ABF40C151A49B8D30070368E /* NSColor+PageBuilder.h in Headers */,
 				ABF40C221A49B8D30070368E /* TSPageBuilder.h in Headers */,
 				ABF40C241A49B8D30070368E /* TSPageDoubleAggregator.h in Headers */,
 				ABF40C1F1A49B8D30070368E /* NSXMLElement+PageBuilder.h in Headers */,
 				ABF40C1B1A49B8D30070368E /* NSRegularExpression+PageBuilder.h in Headers */,
 				ABF40C171A49B8D30070368E /* NSDate+PageBuilder.h in Headers */,
-				ABF40C151A49B8D30070368E /* NSColor+PageBuilder.h in Headers */,
 				ABF40C1D1A49B8D30070368E /* NSString+PageBuilder.h in Headers */,
 				ABF40C131A49B8D30070368E /* NSAttributedString+PageBuilder.h in Headers */,
 				ABF40C191A49B8D30070368E /* NSMutableArray+PageBuilder.h in Headers */,
@@ -262,6 +370,42 @@
 			productReference = ABD2518E1A4994DD00BB4BFC /* PDFPageBuilderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		ABD42A1D1A49F27F00870D65 /* PageBuilderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABD42A3C1A49F27F00870D65 /* Build configuration list for PBXNativeTarget "PageBuilderDemo" */;
+			buildPhases = (
+				ABD42A1A1A49F27F00870D65 /* Sources */,
+				ABD42A1B1A49F27F00870D65 /* Frameworks */,
+				ABD42A1C1A49F27F00870D65 /* Resources */,
+				ABD42A3F1A49F2DB00870D65 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PageBuilderDemo;
+			productName = PageBuilderDemo;
+			productReference = ABD42A1E1A49F27F00870D65 /* PageBuilderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABD42A2F1A49F27F00870D65 /* PageBuilderDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABD42A3D1A49F27F00870D65 /* Build configuration list for PBXNativeTarget "PageBuilderDemoTests" */;
+			buildPhases = (
+				ABD42A2C1A49F27F00870D65 /* Sources */,
+				ABD42A2D1A49F27F00870D65 /* Frameworks */,
+				ABD42A2E1A49F27F00870D65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABD42A321A49F27F00870D65 /* PBXTargetDependency */,
+			);
+			name = PageBuilderDemoTests;
+			productName = PageBuilderDemoTests;
+			productReference = ABD42A301A49F27F00870D65 /* PageBuilderDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -277,6 +421,13 @@
 					ABD2518D1A4994DD00BB4BFC = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					ABD42A1D1A49F27F00870D65 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					ABD42A2F1A49F27F00870D65 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = ABD42A1D1A49F27F00870D65;
+					};
 				};
 			};
 			buildConfigurationList = ABD2517D1A4994DD00BB4BFC /* Build configuration list for PBXProject "PDFPageBuilder" */;
@@ -285,6 +436,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = ABD251791A4994DD00BB4BFC;
 			productRefGroup = ABD251841A4994DD00BB4BFC /* Products */;
@@ -293,6 +445,8 @@
 			targets = (
 				ABD251821A4994DD00BB4BFC /* PDFPageBuilder */,
 				ABD2518D1A4994DD00BB4BFC /* PDFPageBuilderTests */,
+				ABD42A1D1A49F27F00870D65 /* PageBuilderDemo */,
+				ABD42A2F1A49F27F00870D65 /* PageBuilderDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -306,6 +460,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		ABD2518C1A4994DD00BB4BFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD42A1C1A49F27F00870D65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD42A491A4A073C00870D65 /* DemoLogo.jpeg in Resources */,
+				ABD42A441A49F3F900870D65 /* Demo-A4.pdf in Resources */,
+				ABD42A421A49F3D200870D65 /* Demo-A4.map.xml in Resources */,
+				ABD42A281A49F27F00870D65 /* Images.xcassets in Resources */,
+				ABD42A2B1A49F27F00870D65 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD42A2E1A49F27F00870D65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,6 +518,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ABD42A1A1A49F27F00870D65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD42A261A49F27F00870D65 /* main.m in Sources */,
+				ABD42A241A49F27F00870D65 /* AppDelegate.m in Sources */,
+				ABD42A471A49FB8600870D65 /* DemoPDFDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABD42A2C1A49F27F00870D65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABD42A371A49F27F00870D65 /* PageBuilderDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -353,7 +544,23 @@
 			target = ABD251821A4994DD00BB4BFC /* PDFPageBuilder */;
 			targetProxy = ABD251901A4994DD00BB4BFC /* PBXContainerItemProxy */;
 		};
+		ABD42A321A49F27F00870D65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABD42A1D1A49F27F00870D65 /* PageBuilderDemo */;
+			targetProxy = ABD42A311A49F27F00870D65 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABD42A291A49F27F00870D65 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABD42A2A1A49F27F00870D65 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		ABD251971A4994DD00BB4BFC /* Debug */ = {
@@ -504,6 +711,74 @@
 			};
 			name = Release;
 		};
+		ABD42A381A49F27F00870D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PageBuilderDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+			};
+			name = Debug;
+		};
+		ABD42A391A49F27F00870D65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PageBuilderDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+			};
+			name = Release;
+		};
+		ABD42A3A1A49F27F00870D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PageBuilderDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PageBuilderDemo.app/Contents/MacOS/PageBuilderDemo";
+			};
+			name = Debug;
+		};
+		ABD42A3B1A49F27F00870D65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PageBuilderDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PageBuilderDemo.app/Contents/MacOS/PageBuilderDemo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -533,6 +808,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		ABD42A3C1A49F27F00870D65 /* Build configuration list for PBXNativeTarget "PageBuilderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABD42A381A49F27F00870D65 /* Debug */,
+				ABD42A391A49F27F00870D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ABD42A3D1A49F27F00870D65 /* Build configuration list for PBXNativeTarget "PageBuilderDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABD42A3A1A49F27F00870D65 /* Debug */,
+				ABD42A3B1A49F27F00870D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

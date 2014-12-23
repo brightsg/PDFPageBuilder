@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataMap>
+	<Constant Name="NumberPerPage" Value="2" />
+	
+	<Push Property="FontFamily" Value="Helvetica" />
+	<Push Property="FontSize" Value="11" />
+
+	<Push Property="TextVerticalAlignment" Value="Center" />
+	
+	<Text X="10" Y="10" Width="190" Height="16.045" FontSize="16">
+		<Run FontSize="18" Foreground="blueColor">{AppName} </Run>
+		<Condition Expression="IsConditionA">
+			<True>
+				<Run FontFamily="Helvetica" Foreground="8d8e8f">{CondA} is {CondAValue}</Run>
+			</True>
+		</Condition>
+		<Condition Expression="IsConditionA OR IsConditionB">
+			<True>
+				<Run Foreground="redColor"> and {CondA} or {CondB} is true</Run>
+			</True>
+		</Condition>
+		<Condition Expression="IsConditionC">
+			<True>
+				<Run Foreground="blackColor">{CondC} is true</Run>
+			</True>
+            <False>
+                <Run Foreground="blackColor"> but {CondC} is false</Run>
+            </False>
+		</Condition>
+	</Text>
+
+	<Push Property="TextAlignment" Value="Right" />
+	<Condition Expression="IsLogoIncluded">
+		<True>
+			<Image Source="{Logo}" X="138.333" Y="13" Width="61.667" Height="10.045" />
+		</True>
+		<False>
+			<Text X="10" Y="10" Width="190" Height="16.045">
+				<Run FontWeight="Bold">{AppName}</Run>
+			</Text>
+		</False>
+	</Condition>
+	<Pop Property="TextAlignment" />
+	
+	<Pop Property="TextVerticalAlignment" />
+
+	<ForEach Enumerable="Box1Details" Text.Y="38.064" Text.YSpacing="0">
+		<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+		<Text X="12" Width="57.667" TextAlignment="Right" FontFamily="Arial">{Value}</Text>
+	</ForEach>
+
+	<ForEach Enumerable="Box2Details" Text.Y="38.064" Text.YSpacing="0">
+		<Text X="76.167" Width="40" Foreground="404142">{Key}</Text>
+		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N02}</Text>
+	</ForEach>
+
+	<ForEach Enumerable="Box3Details" Text.Y="38.064" Text.YSpacing="0">
+		<Text X="140.333" Width="40" Foreground="404142">{Key}</Text>
+		<Text X="140.333" Width="57.667" TextAlignment="Right" FontFamily="Times">£{Value:N02}</Text>
+	</ForEach>
+
+	<Push Property="TextVerticalAlignment" Value="Bottom" />
+	<Push Property="FontStyle" Value="Italic" />
+	<Text X="76.167" Y="28.905" Width="57.667" Height="51.167" Foreground="404142">Total</Text>
+	<Text X="76.167" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box2Total:N02}</Text>
+	<Text X="140.333" Y="28.905" Width="57.667" Height="51.167" Foreground="404142">Total</Text>
+	<Text X="140.333" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box3Total:N02}</Text>
+	<Pop Property="FontStyle" />
+	<Pop Property="TextVerticalAlignment" />
+
+	<Text X="10" Y="90.861" Width="61.667" Height="5" FontWeight="Bold" FontSize="13.2805">{Box 4 Title}</Text>
+
+	<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="0">
+		<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+		<Text X="12" Width="57.667" TextAlignment="Right">{Value}</Text>
+	</ForEach>
+
+	<ForEach Enumerable="Box5Details" Text.Y="98.491" Text.YSpacing="0">
+		<Text X="76.167" Width="40" Foreground="404142">{Key}</Text>
+		<Text X="76.167" Width="57.667" TextAlignment="Right">{Value}</Text>
+	</ForEach>
+
+	<Text X="140.333" Y="98.582" Width="57.667" Height="30.65" TextAlignment="Center" TextVerticalAlignment="Center">
+        <Run FontSize="24">{Box6Content}</Run>
+		<Condition Expression="IsBox6Sub1 OR IsBox6Sub2">
+			<True>
+				<LineBreak />
+				<Run>And <Condition Expression="IsBox6Sub1"><True>{Box6Sub1Content}</True></Condition><Condition Expression="IsBox6Sub2"><True> {Box6Sub2Content}</True></Condition> is small</Run>
+			</True>
+		</Condition>
+		<Condition Expression="IsBox6Sub3">
+			<True>
+				<LineBreak />
+				<LineBreak />
+				<Run>{Box6Sub3Content}</Run>
+			</True>
+		</Condition>
+	</Text>
+
+	<Condition Expression="IsFooterIncluded">
+		<True>
+			<Text X="10" Y="136.233" Width="190" Height="12.267">
+                {Footer}
+			</Text>
+		</True>
+		<False>
+			<Text X="10" Y="136.233" Width="190" Height="12.267">No footer supplied</Text>
+		</False>
+	</Condition>
+	
+	<Condition Expression="ShowCredits">
+		<False>
+			<Text X="159.146" Y="134.733" Width="41.355" Height="5.625" BorderBackground="ffffff"> </Text>
+		</False>
+	</Condition>
+	
+	<Pop Property="FontSize" />
+	<Pop Property="FontFamily" />
+
+</DataMap>
