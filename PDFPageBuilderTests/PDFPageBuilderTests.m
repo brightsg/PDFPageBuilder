@@ -1,6 +1,6 @@
 //
-//  TSPageBuilderTests.m
-//  TSPageBuilderTests
+//  PDFPageBuilderTests.m
+//  PDFPageBuilderTests
 //
 //  Created by Jonathan Mitchell on 23/12/2014.
 //  Copyright (c) 2014 Thesaurus Software. All rights reserved.
@@ -9,11 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
-@interface TSPageBuilderTests : XCTestCase
+@interface PDFPageBuilderTests : XCTestCase
 
 @end
 
-@implementation TSPageBuilderTests
+@implementation PDFPageBuilderTests
 
 - (void)setUp {
     [super setUp];

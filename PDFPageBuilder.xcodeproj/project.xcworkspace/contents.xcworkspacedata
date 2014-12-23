@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TSPageBuilder.xcodeproj">
+      location = "self:PDFPageBuilder.xcodeproj">
    </FileRef>
 </Workspace>

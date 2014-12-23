@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for TSPageBuilder.
-FOUNDATION_EXPORT double TSPageBuilderVersionNumber;
-
-//! Project version string for TSPageBuilder.
-FOUNDATION_EXPORT const unsigned char TSPageBuilderVersionString[];
-
 #import "TSPageTextItem.h"
 #import "TSPageImageItem.h"
 

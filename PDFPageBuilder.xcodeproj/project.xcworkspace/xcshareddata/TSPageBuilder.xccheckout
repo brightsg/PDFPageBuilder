@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A88AC3EE-CB7A-435C-B18E-E46662D1EC09</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TSPageBuilder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>530E0FD279CC69D341E819E02336B1830BED26E4</key>
+		<string>https://github.com/ThesaurusSoftware/TSPageBuilder</string>
+		<key>B93044F2DDFB868A158FCBABECCA5F645C430F3C</key>
+		<string>bitbucket.org:thesaurussoftware/brightpay.osx.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TSPageBuilder.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>530E0FD279CC69D341E819E02336B1830BED26E4</key>
+		<string>../..</string>
+		<key>B93044F2DDFB868A158FCBABECCA5F645C430F3C</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ThesaurusSoftware/TSPageBuilder</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>530E0FD279CC69D341E819E02336B1830BED26E4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B93044F2DDFB868A158FCBABECCA5F645C430F3C</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>530E0FD279CC69D341E819E02336B1830BED26E4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TSPageBuilder</string>
+		</dict>
+	</array>
+</dict>
+</plist>
