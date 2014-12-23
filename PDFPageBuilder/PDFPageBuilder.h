@@ -13,5 +13,5 @@ FOUNDATION_EXPORT double PDFPageBuilderVersionNumber;
 FOUNDATION_EXPORT const unsigned char PDFPageBuilderVersionString[];
 
 #import <PDFPageBuilder/TSPageBuilder.h>
-#import <PDFPageBuilder/TSPage.h>
-#import <PDFPageBuilder/TSDocument.h>
+#import <PDFPageBuilder/TSPDFPage.h>
+#import <PDFPageBuilder/TSPDFDocument.h>
