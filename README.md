@@ -31,7 +31,7 @@ Each page item requires X and Y values denoting the item insertion point. In man
 
 If no explicit Width is supplied then the box defaults to the page width. If no explicit Height is defined then the box height will default to the laid out size of the content.
 
-Box positioning issues can be debugged by setting `PDFPageBuilder -highlightPageItemContainerRects == YES` to outline the box rect following layout.
+Box positioning issues can be debugged by setting `PDFPageBuilder -highlightPageItemContainerRects = YES` to outline the box rect following layout.
 
 Rendering
 =========
