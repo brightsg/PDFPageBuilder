@@ -25,12 +25,32 @@ Requires 64 bit ARC.
 Box Model
 =========
 
-PDFPageBuilder uses a top left based co-ordinate system that corresponds to an NSView flipped context. All dimensions are in mm from the top left hand page corner. A scaling factor can be defined for use in cases where the map file contains dimensions in non mm units.  
+PDFPageBuilder uses a top left based co-ordinate system that corresponds to an NSView flipped context. All dimensions are in mm from the top left hand page corner. A scaling factor can be defined for use in cases where the map file contains dimensions in non mm units. FontSizes also default to mm.
+
+Each page item requires X and Y values denoting the item insertion point. In many cases an explicit box Width and Height will be defined. Text items wrap within the box and may be justified both horizontally and vertically.
+
+If no explicit Width is supplied then the box defaults to the page width. If no explicit Height is defined then the box height will default to the laid out size of the content.
+
+Box positioning issues can be debugged by setting `PDFPageBuilder -highlightPageItemContainerRects == YES` to outline the box rect following layout.
+
+Rendering
+=========
+
+A page item is rendered based on the values of geometry and styling properties defined in the mapping file. Properties can be pushed on to a stack to be applied to all subsequent items or defined as attributes in which case they apply to just the defining element.
+
+Normally items are added to the page by loading a mapping file. However items can be added directly to the pageBuilder object. This approach is illustrated in the demo app.
 
 XML Map File Format
 ==========
 
-The map file defines key values which are used to access object properties and provides position and styling information to apply to the property when it is rendered into the PDF page. Both textual and image items can be rendered.
+Usage of all that is described below is illustrated in the [demo map XML file](./PageBuilderDemo/Demo-A4.map.xml). It is probably easiest to read the XML file directly in order to figure out the syntax outlined below.
+
+The map file defines key paths which are used to access object properties and provides position and styling information to apply to the object property when it is rendered into the PDF page. Both textual and image items can be rendered.
+
+Key values are defined with the XML text like so:
+
+    {KeyName}
+	{KeyName.Support.Paths with spaces}
 
 The XML file supports the following elements:
 
@@ -46,7 +66,38 @@ The XML file supports the following elements:
 * __False__ - The elements content will be rendered if the enclosing Condition evaluates to false.
 * __LineBreak__ - Inserts a line break.
 
-Usage of all these elements is illustrated in the [demo map XML file](./PageBuilderDemo/Demo-A4.map.xml).
+The XML file supports the following element attributes:
+
+* __Name__ - Identifies a named constant
+* __Key__ - An enumerable Key
+* __Value__ - A Value.
+* __Property__ - An attribute name to be used when pushing or popping.
+* __X__ - X co-ordinate position.
+* __Y__ - Y Co-ordinate position.
+* __Width__ - Box width.
+* __Height__ - Box Height.
+* __FontSize__ - Font size. (P)
+* __FontFamily__ - Font family name. (P)
+* __FontStyle__ - Font style : Italic. (P)
+* __FontWeight__ - Font weight : Bold. (P)
+* __FontFamily__ - Font family name. (P)
+* __TextPadding__ - Box padding : 4 csv values (left, top, right, bottom) (P)
+* __Foreground__ - Foreground colour : hex RGB. (P)
+* __Expression__ - A simple Boolean expression used to evaluate a Condition element : AND, OR and !.
+* __Source__ - An image source.
+* __Enumerable__ - A collection object to be enumerated over.
+* __Text.Y__ - An initial enumerated text Y position.
+* __Text.YSpacing__ - Enumerated text spacing.
+* __TextAlignment__ - Alignment with a box rect : Left, Center or Right. (P)
+* __TextVerticalAlignment__ - Alignment with a box rect, Top, Center or Bottom. (P)
+* __BorderBackground__ - Box background colour : hex RGB. (P)
+
+(P) Values can be pushed as properties for these attributes.
+ 
+Delegate methods
+================
+
+A number of delegate methods are provided to assist with customising the rendering process. See the demo app for insight.
 
 Credits
 =======
