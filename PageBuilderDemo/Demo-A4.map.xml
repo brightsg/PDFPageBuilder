@@ -81,11 +81,11 @@
 	</ForEach>
 
 	<Text X="140.333" Y="98.582" Width="57.667" Height="30.65" TextAlignment="Center" TextVerticalAlignment="Center">
-        <Run FontSize="24">{Box6Content}</Run>
+        <Run FontSize="24">{Box6Content.Title}</Run>
 		<Condition Expression="IsBox6Sub1 OR IsBox6Sub2">
 			<True>
 				<LineBreak />
-				<Run>And <Condition Expression="IsBox6Sub1"><True>{Box6Sub1Content}</True></Condition><Condition Expression="IsBox6Sub2"><True> {Box6Sub2Content}</True></Condition> is small</Run>
+				<Run>And <Condition Expression="IsBox6Sub1"><True>{Box6Content.Sub Content 1}</True></Condition><Condition Expression="IsBox6Sub2"><True> {Box6Content.Sub Content 2}</True></Condition> is small</Run>
 			</True>
 		</Condition>
 		<Condition Expression="IsBox6Sub3">

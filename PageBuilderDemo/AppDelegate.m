@@ -139,9 +139,8 @@
                             @{@"Key" : @"Key 4", @"Value" : @"Delta"},
                             ],
                     
-                    @"Box6Content" : @"This is Big!",
+                    @"Box6Content" : @{ @"Title" : @"This is Big!", @"Sub Content 1" : @"sub 1"},
                     @"IsBox6Sub1" : @YES,
-                    @"Box6Sub1Content" : @"sub 1",
                     @"ShowCredits" : @YES
                     };
 
