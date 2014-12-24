@@ -73,6 +73,8 @@
         // get the rect to be obliterated
         NSRect rect = NSMakeRect(x, y, w, h);
         
+        // manually add item to the page
+        
         // add an empty text item to obliterate the unwanted content in the target rect
         [page.pageBuilder pushMapKey:TSKeyBorderBackground value:@"FFFFFF"];
         [page.pageBuilder addTextItem:[[NSAttributedString alloc] initWithString:@""] rect:rect];

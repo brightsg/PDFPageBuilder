@@ -97,6 +97,7 @@
 		</Condition>
 	</Text>
 
+    <Push Property="TextPadding" Value="1.5 1.25 1.5 0" />
 	<Condition Expression="IsFooterIncluded">
 		<True>
 			<Text X="10" Y="136.233" Width="190" Height="12.267">
@@ -107,7 +108,8 @@
 			<Text X="10" Y="136.233" Width="190" Height="12.267">No footer supplied</Text>
 		</False>
 	</Condition>
-	
+	<Pop Property="TextPadding" />
+        
 	<Condition Expression="ShowCredits">
 		<False>
 			<Text X="159.146" Y="134.733" Width="41.355" Height="5.625" BorderBackground="ffffff"> </Text>

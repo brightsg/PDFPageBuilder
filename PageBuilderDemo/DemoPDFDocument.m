@@ -53,6 +53,19 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (void)setDelegate:(id<TSPDFDocumentDelegate,TSPDFPageDelegate,TSPageBuilderDelegate>)delegate
+{
+    [super setDelegate:delegate];
+    
+    for (NSInteger i = 0; i < self.pageCount; i++) {
+        TSPDFPage *page = (id)[self pageAtIndex:i];
+        page.delegate = self;
+    }
+}
+
+#pragma mark -
 #pragma mark Layout
 
 - (void)layoutPageItemsForObject:(NSObject *)object withMapURL:(NSURL *)mapURL pageIndex:(NSUInteger)pageIndex partIndex:(NSUInteger)partIndex
