@@ -40,6 +40,12 @@ A page item is rendered based on the values of geometry and styling properties d
 
 Normally items are added to the page by loading a mapping file. However items can be added directly to the pageBuilder object. This approach is illustrated in the demo app.
 
+        // add an empty text item to obliterate the unwanted content in the target rect
+        [page.pageBuilder pushMapKey:TSKeyBorderBackground value:@"FFFFFF"];
+        [page.pageBuilder addTextItem:[[NSAttributedString alloc] initWithString:@""] rect:rect];
+        [page.pageBuilder popMapKey:TSKeyBorderBackground];
+
+
 XML Map File Format
 ==========
 
@@ -135,63 +141,120 @@ __True__ - The elements content will be rendered if the enclosing Condition expr
 XML Map File Attributes
 ---------------------
 
-The XML file supports the following element attributes:
+The XML file supports the following element attributes. Attributes suffixed with (P) can also be pushed as properties on to the attribute stack. Whenever an item is rendered both the inline attributes and the current stack attributes are applied to the item.
 
-* __BorderBackground__ - Box background colour : hex RGB (P).
+__BorderBackground__ - Box background colour : hex RGB (P).
 
-* __Enumerable__ - A collection object to be enumerated over.
+		<Text X="159.146" Y="134.733" Width="41.355" Height="5.625" BorderBackground="ffffff"> </Text>
+		<Push Property="BorderBackground" Value="ffffff" />
 
-* __Expression__ - A simple Boolean expression used to evaluate a Condition element : AND, OR and !.
+__Enumerable__ - A collection object to be enumerated over as part of a `ForEach` element.
 
-* __FontSize__ - Font size (P).
+		<ForEach Enumerable="Box1Details" Text.Y="38.064" Text.YSpacing="0">
+			<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+			<Text X="12" Width="57.667" TextAlignment="Right" FontFamily="Arial">{Value}</Text>
+		</ForEach>
 
-* __FontFamily__ - Font family name (P).
+__Expression__ - A simple Boolean expression used to evaluate a `Condition` element : supports AND, OR and !.
 
-* __FontStyle__ - Font style : Italic (P).
+		<Condition Expression="IsConditionA OR IsConditionB">
+			<True>
+				<Run Foreground="redColor"> and {CondA} or {CondB} is true</Run>
+			</True>
+		</Condition>
 
-* __FontWeight__ - Font weight : Bold (P).
+__FontSize__ - Font size (P).
 
-* __Foreground__ - Foreground colour : hex RGB (P).
+		<Text X="10" Y="10" Width="190" Height="16.045" FontSize="16">
+		<Push Property="FontSize" Value="16" />
 
-* __Height__ - Box Height.
+__FontFamily__ - Font family name (P).
 
-* __Key__ - An enumerable Key.
+		<Run FontFamily="Helvetica" Foreground="8d8e8f">{CondA} is {CondAValue}</Run>
+		<Push Property="FontFamily" Value="Helvetica" />
 
-* __Name__ - Identifies a named constant.
+__FontStyle__ - Font style : Italic (P).
 
-* __Property__ - An attribute name to be used when pushing or popping.
+		<Push Property="FontStyle" Value="Italic" />
 
-* __Source__ - An image source.
+__FontWeight__ - Font weight : Bold (P).
 
-* __TextAlignment__ - Alignment with a box rect : Left, Center or Right (P)
+		<Run FontWeight="Bold">{AppName}</Run>
 
-* __TextPadding__ - Box padding : 4 csv values (left, top, right, bottom) (P).
+__Foreground__ - Foreground colour : hex RGB (P).
 
-* __TextVerticalAlignment__ - Alignment with a box rect : Top, Center or Bottom (P).
+		<Run Foreground="blackColor">{CondC} is true</Run>
 
-* __Text.Y__ - An initial enumerated text Y position.
+__Height__ - Defines the height of the item layout box. May be omitted in which case the items laid out height will be used.
 
-* __Text.YSpacing__ - Enumerated text spacing.
+		<Text X="10" Y="10" Width="190" Height="16.045" FontSize="16">
 
-* __Value__ - A Value.
+__Name__ - Identifies a named constant.
 
-* __Width__ - Box width.
+		<Constant Name="NumberPerPage" Value="2" />
 
-* __X__ - X co-ordinate position.
+__Property__ - An attribute name to be used when pushing or popping.
 
-* __Y__ - Y Co-ordinate position.
+		<Push Property="FontFamily" Value="Helvetica" />
+
+__Source__ - An image source.
+
+		<Image Source="{Logo}" X="138.333" Y="13" Width="61.667" Height="10.045" />
+
+
+__TextAlignment__ - Horizontal alignment within an item box rect : Left, Center or Right (P). Also applies to images.
+
+		<Push Property="TextAlignment" Value="Right" />
+
+
+__TextPadding__ - Box padding : 4 csv values (left, top, right, bottom) (P).
+
+		<Push Property="TextPadding" Value="1.5 1.25 1.5 0" />
+
+__TextVerticalAlignment__ - Vertical alignment with an item box rect : Top, Center or Bottom (P).
+
+
+		<Text X="140.333" Y="98.582" Width="57.667" Height="30.65" TextAlignment="Center" TextVerticalAlignment="Center">
+		<Push Property="TextVerticalAlignment" Value="Bottom" />
+
+__Text.Y__ - An initial enumerated text Y position within a `ForEach` element.
+
+		<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="0">
+			<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+			<Text X="12" Width="57.667" TextAlignment="Right">{Value}</Text>
+		</ForEach>
+
+__Text.YSpacing__ - Y spacing between elements rendered within a `ForEach` element.
+
+		<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="10">
+		...
+
+__Value__ - The value of an attribute to be pushed as part of a `Push`.
+
+		<Push Property="FontFamily" Value="Helvetica" />
+
+
+__Width__ -  Defines the width of the item layout box. If omitted then defaults to the page width. Text items will wrap within the box. Image items will be scaled to fit within the box while maintaining their native aspect ratio.
+
+		<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+
+__X__ - X co-ordinate position. Required.
+
+		<Text X="76.167" Width="40" Foreground="404142">{Key}</Text>
+
+__Y__ - Y Co-ordinate position. May be omitted for items being render with a `ForEach` loop that defines `Text.Y`.
+
+		<Text X="10" Y="10" Width="190" Height="16.045">
+			<Run FontWeight="Bold">{AppName}</Run>
+		</Text>
 
 
 
-
-
-
-(P) Values can be pushed as properties for these attributes.
  
 Delegate methods
 ================
 
-A number of delegate methods are provided to assist with customising the rendering process. See the demo app for insight.
+A number of delegate methods are provided to assist with customising the rendering process. See the `TSPageBuilderDelegate`, `TSPDFPageDelegate` and `TSPDFDocumentDelegate` protocols..
 
 Credits
 =======
