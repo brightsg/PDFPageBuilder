@@ -47,50 +47,144 @@ Usage of all that is described below is illustrated in the [demo map XML file](.
 
 The map file defines key paths which are used to access object properties and provides position and styling information to apply to the object property when it is rendered into the PDF page. Both textual and image items can be rendered.
 
-Key values are defined with the XML text like so:
+XML Map File Keys
+---------------------
+
+Object keys are defined with the XML text like so:
 
     {KeyName}
 	{KeyName.Support.Paths with spaces}
 
+Then when the XML is loaded and parsed for a given `object` the key expressions are replaced by the value of `[object valueForKey:@"KeyName"]`.
+
+XML Map File Elements
+---------------------
+
 The XML file supports the following elements:
 
-* __Push__ - Push a value onto the named property stack
-* __Pop__ - Pop the last value from the named property stack
-* __Text__ - Insert a text item based on the value of the element attributes.
-* __Run__ - Enables the concatenation of separate elements within a Text element.
-* __Image__ - Insert an image item based on the value of the element attributes. 
-* __ForEach__ - Iterate over a collection object based on the value of the element attributes.
-* __Constant__ - A simple constant value that the client can use to assist with layout.
-* __Condition__ - A conditional test that supports boolean AND, OR and ! expressions.
-* __True__ - The elements content will be rendered if the enclosing Condition evaluates to true.
-* __False__ - The elements content will be rendered if the enclosing Condition evaluates to false.
-* __LineBreak__ - Inserts a line break.
+__Condition__ - A conditional test that supports boolean AND, OR and ! expressions and True / False child elements.
+
+		<Condition Expression="IsConditionA OR IsConditionB">
+			<True>
+				<Run Foreground="redColor"> and {CondA} or {CondB} is true</Run>
+			</True>
+		</Condition>
+
+
+
+__Constant__ - A simple constant value that the client can use to assist with layout.
+
+		<Constant Name="NumberPerPage" Value="2" />
+
+__False__ - The elements content will be rendered if the enclosing Condition evaluates to false.
+
+		<Condition Expression="ShowCredits">
+			<False>
+				<Text X="159.146" Y="134.733" Width="41.355" Height="5.625" BorderBackground="ffffff"> </Text>
+			</False>
+		</Condition>
+
+__ForEach__ - Iterate over a collection object based on the value of the element attributes.
+
+		<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="0">
+			<Text X="12" Width="40" Foreground="404142">{Key}</Text>
+			<Text X="12" Width="57.667" TextAlignment="Right">{Value}</Text>
+		</ForEach>
+
+__Image__ - Insert an image item based on the value of the element attributes. 
+
+		<Image Source="{Logo}" X="138.333" Y="13" Width="61.667" Height="10.045" />
+
+
+__LineBreak__ - Inserts a line break.
+
+		<LineBreak />
+		<Run>{Box6Sub3Content}</Run>
+
+__Pop__ - Pop the last value from the named property stack.
+
+		<Pop Property="FontSize" />
+
+__Push__ - Push a value onto the named property stack.
+
+		<Push Property="FontFamily" Value="Helvetica" />
+
+__Run__ - Enables the concatenation of separate text segments within an enclosing Text element.
+
+		<Text X="10" Y="10" Width="190" Height="16.045" FontSize="16">
+			<Run FontSize="18" Foreground="blueColor">{AppName} </Run>
+		</Text>
+
+__Text__ - Insert a text item based on the value of the element attributes.
+
+		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N02}</Text>
+
+__True__ - The elements content will be rendered if the enclosing Condition expression evaluates to true.
+
+		<Condition Expression="IsLogoIncluded">
+			<True>
+				<Image Source="{Logo}" X="138.333" Y="13" Width="61.667" Height="10.045" />
+			</True>
+			<False>
+				<Text X="10" Y="10" Width="190" Height="16.045">
+					<Run FontWeight="Bold">{AppName}</Run>
+				</Text>
+			</False>
+		</Condition>
+
+XML Map File Attributes
+---------------------
 
 The XML file supports the following element attributes:
 
-* __Name__ - Identifies a named constant
-* __Key__ - An enumerable Key
-* __Value__ - A Value.
-* __Property__ - An attribute name to be used when pushing or popping.
-* __X__ - X co-ordinate position.
-* __Y__ - Y Co-ordinate position.
-* __Width__ - Box width.
-* __Height__ - Box Height.
-* __FontSize__ - Font size. (P)
-* __FontFamily__ - Font family name. (P)
-* __FontStyle__ - Font style : Italic. (P)
-* __FontWeight__ - Font weight : Bold. (P)
-* __FontFamily__ - Font family name. (P)
-* __TextPadding__ - Box padding : 4 csv values (left, top, right, bottom) (P)
-* __Foreground__ - Foreground colour : hex RGB. (P)
-* __Expression__ - A simple Boolean expression used to evaluate a Condition element : AND, OR and !.
-* __Source__ - An image source.
+* __BorderBackground__ - Box background colour : hex RGB (P).
+
 * __Enumerable__ - A collection object to be enumerated over.
+
+* __Expression__ - A simple Boolean expression used to evaluate a Condition element : AND, OR and !.
+
+* __FontSize__ - Font size (P).
+
+* __FontFamily__ - Font family name (P).
+
+* __FontStyle__ - Font style : Italic (P).
+
+* __FontWeight__ - Font weight : Bold (P).
+
+* __Foreground__ - Foreground colour : hex RGB (P).
+
+* __Height__ - Box Height.
+
+* __Key__ - An enumerable Key.
+
+* __Name__ - Identifies a named constant.
+
+* __Property__ - An attribute name to be used when pushing or popping.
+
+* __Source__ - An image source.
+
+* __TextAlignment__ - Alignment with a box rect : Left, Center or Right (P)
+
+* __TextPadding__ - Box padding : 4 csv values (left, top, right, bottom) (P).
+
+* __TextVerticalAlignment__ - Alignment with a box rect : Top, Center or Bottom (P).
+
 * __Text.Y__ - An initial enumerated text Y position.
+
 * __Text.YSpacing__ - Enumerated text spacing.
-* __TextAlignment__ - Alignment with a box rect : Left, Center or Right. (P)
-* __TextVerticalAlignment__ - Alignment with a box rect, Top, Center or Bottom. (P)
-* __BorderBackground__ - Box background colour : hex RGB. (P)
+
+* __Value__ - A Value.
+
+* __Width__ - Box width.
+
+* __X__ - X co-ordinate position.
+
+* __Y__ - Y Co-ordinate position.
+
+
+
+
+
 
 (P) Values can be pushed as properties for these attributes.
  
