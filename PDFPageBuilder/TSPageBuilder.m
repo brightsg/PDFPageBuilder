@@ -517,13 +517,14 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     //
     if ([objEnumerable isKindOfClass:[NSDictionary class]]) {
         
-        // make an array of dictionaries representing key/value pairs
+        // make an array of dictionaries representing key/value pairs.
+        // The XML must references to "{key}" and "{value}"
         NSDictionary *dict = objEnumerable;
         objectArray = [NSMutableArray arrayWithCapacity:dict.count];
         for (id key in dict.allKeys) {
             
             // NOTE: is much better to send in an array of presorted keyValuePair like objects
-            // as the the ourput order here is undefined.
+            // as the output order here is undefined.
             // we want an object with same properties as a managed KeyValuePair<TKey, TValue>
             id keyValuePair = @{@"key" : key, @"value" : dict[key]};
             [objectArray addObject:keyValuePair];
@@ -531,7 +532,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         
     } else if ([objEnumerable isKindOfClass:[NSArray class]]) {
         
-        // the objects in this array must respond to key and value
+        // the objects in this array must respond to {key} and {value}
         objectArray = objEnumerable;
         
     } else {
