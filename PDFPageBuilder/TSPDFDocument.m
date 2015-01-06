@@ -122,6 +122,9 @@
     NSMutableDictionary* printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
     NSPrintInfo* printInfo = [[NSPrintInfo alloc] initWithDictionary: printInfoDictionary];
     
+    printInfo.verticallyCentered = NO;
+    printInfo.horizontallyCentered = NO;
+
     [[printInfo dictionary] addEntriesFromDictionary:printSettings];
     
     // set orientation
@@ -132,9 +135,10 @@
         [printInfo setOrientation:isLandscape ? NSLandscapeOrientation : NSPortraitOrientation];
     }
     
+    
     // get the print operation
     // this is not mentioned in the docs but is in the header, along with a few other functions
-    NSPrintOperation *printOperation = [self printOperationForPrintInfo:printInfo scalingMode:kPDFPrintPageScaleNone autoRotate:YES];
+    NSPrintOperation *printOperation = [self printOperationForPrintInfo:printInfo scalingMode:kPDFPrintPageScaleNone autoRotate:NO];
     
     if (printOperation) {
         [printOperation setShowsPrintPanel:YES];
