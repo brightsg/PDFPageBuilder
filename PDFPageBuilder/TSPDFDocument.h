@@ -52,4 +52,11 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
  */
 - (void)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize;
 
+/*!
+ 
+ Returns a print operation suitable for printing the PDF document.
+ 
+ */
+- (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings;
+
 @end

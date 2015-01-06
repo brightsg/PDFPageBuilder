@@ -150,4 +150,30 @@
     // repeat the object
     return @[object, object, object];
 }
+
+#pragma mark -
+#pragma mark Printing
+
+- (void)printDocument:(id)sender
+{
+    NSPrintOperation *printOperation = [self.pdfDocument printOperationWithSettings:@{}];
+    
+    // run the print operation
+    [printOperation runOperationModalForWindow:self.window delegate:self didRunSelector:@selector(printOperationDidRun:success:contextInfo:) contextInfo:NULL];
+}
+
+- (void)printOperationDidRun:(NSPrintOperation *)printOperation  success:(BOOL)success  contextInfo:(void *)contextInfo
+{
+    // note: this may be called on spawned thread
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        
+        if (success) {
+            
+        } else {
+            
+        }
+    });
+
+}
+
 @end

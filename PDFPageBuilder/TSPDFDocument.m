@@ -55,6 +55,7 @@
 
 - (Class)pageClass
 {
+    // note the existence in the header file of delegate method - (Class) classForPage;
     return [TSPDFPage class];
 }
 
@@ -108,6 +109,44 @@
     
     // map object properties to this page using the given map URL
     [pdfPage layoutPageItemsForObject:object withMapURL:url];
+}
+
+#pragma mark -
+#pragma mark Printing
+
+- (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings
+{
+
+    // Configure the print NSPrintInfo
+    NSDictionary* defaultValues = [[NSPrintInfo sharedPrintInfo] dictionary];
+    NSMutableDictionary* printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
+    NSPrintInfo* printInfo = [[NSPrintInfo alloc] initWithDictionary: printInfoDictionary];
+    
+    [[printInfo dictionary] addEntriesFromDictionary:printSettings];
+    
+    // set orientation
+    if ([self pageCount]) {
+        PDFPage *page = [self pageAtIndex:0];
+        NSSize pageSize = [page boundsForBox:kPDFDisplayBoxMediaBox].size;
+        BOOL isLandscape = [page rotation] % 180 == 90 ? pageSize.height > pageSize.width : pageSize.width > pageSize.height;
+        [printInfo setOrientation:isLandscape ? NSLandscapeOrientation : NSPortraitOrientation];
+    }
+    
+    // get the print operation
+    // this is not mentioned in the docs but is in the header, along with a few other functions
+    NSPrintOperation *printOperation = [self printOperationForPrintInfo:printInfo scalingMode:kPDFPrintPageScaleNone autoRotate:YES];
+    
+    if (printOperation) {
+        [printOperation setShowsPrintPanel:YES];
+        [printOperation setShowsProgressPanel:YES];
+        printOperation.canSpawnSeparateThread = YES;
+        
+        // configure the operation print panel
+        NSPrintPanel *printPanel = [printOperation printPanel];
+        [printPanel setOptions:NSPrintPanelShowsCopies | NSPrintPanelShowsPageRange | NSPrintPanelShowsPaperSize | NSPrintPanelShowsOrientation | NSPrintPanelShowsScaling | NSPrintPanelShowsPreview];
+    }
+    
+    return printOperation;
 }
 
 @end
