@@ -48,6 +48,8 @@
 - (void)setupInstance
 {
     // allow override ?
+    
+    _defaultPageSize = TSPageSizeA4;
 }
 
 #pragma mark -
@@ -59,7 +61,12 @@
     return [TSPDFPage class];
 }
 
-- (void)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize
+- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx
+{
+    return [self insertNewPageAtIndex:idx pageSize:self.defaultPageSize];
+}
+
+- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize
 {
     // get page size in MM
     NSSize size = NSMakeSize(-1, -1);
@@ -91,6 +98,8 @@
     
     // insert page into document
     [self insertPage:pdfPage atIndex:idx];
+    
+    return pdfPage;
 }
 
 #pragma mark -

@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
 
 @interface TSPDFDocument : PDFDocument
 
+@property (assign) TSPageSize defaultPageSize;
+
 /*!
  
  Document delegate.
@@ -47,10 +49,17 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
 
 /*!
  
- Insert new page at index within the document.
+ Insert new page with default size at index within the document.
  
  */
-- (void)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize;
+- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx;
+
+/*!
+ 
+ Insert new page with specified size at index within the document.
+ 
+ */
+- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize;
 
 /*!
  
