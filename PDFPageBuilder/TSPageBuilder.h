@@ -31,6 +31,7 @@ extern NSString *TSKeyFontStyle;
 extern NSString *TSKeyFontWeight;
 extern NSString *TSKeyLineHeight;
 extern NSString *TSKeyForeground;
+extern NSString *TSKeyProperty;
 
 @class TSPageBuilder;
 
@@ -174,5 +175,13 @@ extern NSString *TSKeyForeground;
  
  */
 - (TSPageImageItem *)addImageItem:(NSImage*)image rect:(NSRect)rect;
+
+/*!
+ 
+ Dictionary of objects used to render elements.
+ Keys are element names.
+ 
+ */
+@property (strong,readonly) NSMutableDictionary *elementRenderDictionary;
 
 @end

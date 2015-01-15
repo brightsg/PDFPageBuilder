@@ -71,7 +71,8 @@ NSString *TSKeyFontStyle = @"FontStyle";
 NSString *TSKeyFontWeight = @"FontWeight";
 NSString *TSKeyLineHeight = @"LineHeight";
 NSString *TSKeyForeground = @"Foreground";
-           
+NSString *TSKeyProperty = @"Property";
+
 typedef NS_ENUM(NSInteger, TSStyleNameID) {
     TSStyleRotation,
     TSStyleBorderBrush,
@@ -96,7 +97,8 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
 @property (strong,nonatomic) NSRegularExpression *propertyRegex;
 @property (assign) BOOL gcIsLoaded;
 @property (strong,readwrite) NSDictionary *constantElementDictionary;
-@property (strong, nonatomic) NSMutableDictionary *constantElements;
+@property (strong,nonatomic) NSMutableDictionary *constantElements;
+@property (strong,readwrite) NSMutableDictionary *elementRenderDictionary;
 @end
 
 @implementation TSPageBuilder
@@ -185,6 +187,10 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         // set geometry scale
         // the default input map geometry data is in millimetres so scale millimeters to points
         self.geometryAttributeScale = TSPB_SCALE_MM_TO_PTS;
+        
+        // render dictionary
+        NSDictionary *render = @{@"Tick" : @"X"};
+        self.elementRenderDictionary = [NSMutableDictionary dictionaryWithDictionary:render];
 
     }
     
@@ -421,19 +427,31 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     BOOL doLayout = [options[@"doLayout"] boolValue];
     
     // process each child element
-    for (NSXMLElement *xe in [xeParent children]) {
+    for (NSXMLNode *xn in [xeParent children]) {
         
         // element validation
-        if (xe.kind != NSXMLElementKind) {
+        if (xn.kind != NSXMLElementKind) {
             
             // We only want to process elements at this level
             continue;
         }
         
+        // contract
+        NSAssert([xn isKindOfClass:[NSXMLElement class]], @"NSXMLElement expected");
+        NSXMLElement *xe = (id)xn;
+        
+        // Constant
+        if ([xe.name isEqualToString:@"Constant"]) {
+            
+            [self parseConstantElement:xe withObject:object];
+            continue;
+        }
+
+        // if layout is not being performed then we are done
+        if (!doLayout) continue;
+        
         // Push
         if ([xe.name isEqualToString:@"Push"] && [xe attributeForName:@"Property"] && [xe attributeForName:@"Value"]) {
-            
-            if (!doLayout) continue;
             
             id key = [[xe attributeForName:@"Property"] stringValue];
             id value = [[xe attributeForName:@"Value"] stringValue];
@@ -445,9 +463,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         // Pop
         if ([xe.name isEqualToString:@"Pop"] && [xe attributeForName:@"Property"]) {
             
-            if (!doLayout) continue;
-            
-            id key = [[xe attributeForName:@"Property"] stringValue];
+             id key = [[xe attributeForName:@"Property"] stringValue];
             
             [self popMapKey:key];
             continue;
@@ -456,16 +472,12 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         // Text
         if ([xe.name isEqualToString:@"Text"]) {
             
-            if (!doLayout) continue;
-            
             [self layoutTextualElement:xe withObject:object];
             continue;
         }
         
         // Image
         if ([xe.name isEqualToString:@"Image"]) {
-            
-            if (!doLayout) continue;
             
             [self layoutImageElement:xe withObject:object];
             continue;
@@ -475,16 +487,14 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         // ForEach
         if ([xe.name isEqualToString:@"ForEach"]) {
             
-            if (!doLayout) continue;
-            
             [self layoutForeachElement:xe withObject:object];
             continue;
         }
         
-        // Constant
-        if ([xe.name isEqualToString:@"Constant"]) {
+        // Tick
+        if ([xe.name isEqualToString:@"Tick"]) {
             
-            [self parseConstantElement:xe withObject:object];
+            [self layoutTickElement:xe withObject:object];
             continue;
         }
         
@@ -633,7 +643,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     NSArray *pushedAttributes = [self pushAttributesForElement:xe];
 
     // get the attributed string representation of the element
-    NSMutableAttributedString *attrString = [self attributedStringForElement:xe withObject:object];
+    NSMutableAttributedString *attrString = [self attributedStringForNode:xe withObject:object];
     
     // apply the Y aggregators if defined
     NSMutableArray *aggregatorStack = self.stacks[TSKeyYIncrement];
@@ -642,7 +652,6 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         TSPageDoubleAggregator *aggregator = [aggregatorStack tspb_stackPeek];
         double y = aggregator.base + aggregator.index * aggregator.multiplier;
         
-
         [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
         
     } else {
@@ -689,6 +698,33 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     // pop the element attributes
     [self popAttributes:pushedAttributes];
 
+}
+
+- (void)layoutTickElement:(NSXMLElement *)xe withObject:(id)object
+{
+    // contract
+    NSAssert(object, @"object is nil");
+    NSAssert(xe, @"element is nil");
+    NSAssert([xe.name isEqualToString:@"Tick"], @"element name is invalid");
+    
+    BOOL ticked = NO;
+    
+    NSString *propertyName = [[xe attributeForName:@"Property"] stringValue];
+    if (propertyName) {
+        ticked = [[object valueForKey:propertyName] boolValue];
+    }
+    
+    if (ticked) {
+        
+        // get element rectangle
+        NSRect elementRect = [self rectangleForElement:xe];
+
+        // get string rendering for tick
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.elementRenderDictionary[@"Tick"] attributes:self.currentStringAttributes];
+        
+        // add text item
+        [self addTextItem:attrString rect:elementRect];
+    }
 }
 
 - (void)layoutImageElement:(NSXMLElement *)xe withObject:(id)object
@@ -819,59 +855,76 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
 
 - (NSMutableAttributedString *)attributedStringForElement:(NSXMLElement *)xe withObject:(id)object
 {
-    NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:nil];
-    
-    // determine if element has any non text children
-    NSXMLNodeKind nodeKind = xe.kind;
-    for (NSXMLNode *xn in xe.children) {
-        nodeKind = xn.kind;
-        if (nodeKind != NSXMLTextKind) {
-            break;
-        }
-    }
-    
-    //
-    // concatenate non text child items
-    //
-    if (nodeKind != NSXMLTextKind) {
-        for (NSXMLNode *xnChild in xe.children) {
-            NSAttributedString *elementString = nil;
-            
-            // Run
-            if ([xnChild.name isEqualToString:@"Run"]) {
-                
-                elementString = [self attributedStringForElement:(id)xnChild withObject:object];
-                
-                // LineBreak
-            } else if ([xnChild.name isEqualToString:@"LineBreak"]) {
-                
-                elementString = [[NSAttributedString alloc] initWithString:@"\n"];
-                
-            } else {
-                
-                TSLogWarn(@"Unexpected child element : %@", xnChild);
-                
-                elementString = [[NSAttributedString alloc] initWithString:[xnChild stringValue]];
-            }
-            
-            if (elementString) {
-                [resultString appendAttributedString:elementString];
-            }
-            
-        }
-        
-        return resultString;
-    }
-    
     // contract
     NSAssert(object, @"object is nil");
     NSAssert(xe, @"element is nil");
-    NSAssert([(NSXMLNode *)xe.children[0] kind] == NSXMLTextKind, @"expected kind == %li found %li", NSXMLTextKind, [(NSXMLNode *)xe.children[0] kind]);
     
+    NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:nil];
+
+    for (NSXMLNode *xnChild in xe.children) {
+        NSAttributedString *elementString = nil;
+        
+        // Run
+        if ([xnChild.name isEqualToString:@"Run"]) {
+            
+            elementString = [self attributedStringForNode:xnChild withObject:object];
+            
+            // LineBreak
+        } else if ([xnChild.name isEqualToString:@"LineBreak"]) {
+            
+            elementString = [[NSAttributedString alloc] initWithString:@"\n"];
+            
+        } else {
+            
+            if (xnChild.kind != NSXMLTextKind) {
+                TSLogWarn(@"Unexpected child element : %@", xnChild);
+                return nil;
+            }
+            
+            elementString = [self attributedStringForNode:xnChild withObject:object];
+        }
+        
+        if (elementString) {
+            [resultString appendAttributedString:elementString];
+        }
+        
+    }
+    
+    return resultString;
+}
+
+- (NSMutableAttributedString *)attributedStringForNode:(NSXMLNode *)xn withObject:(id)object
+{
+    // contract
+    NSAssert(object, @"object is nil");
+    NSAssert(xn, @"node is nil");
+    
+    // determine if element has any non text children
+    NSXMLElement *xe = [xn isKindOfClass:[NSXMLElement class]] ? (id)xn : nil;
+    NSXMLNodeKind nodeKind = xn.kind;
+    if (xe) {
+        
+        for (NSXMLNode *xn in xe.children) {
+            nodeKind = xn.kind;
+            if (nodeKind != NSXMLTextKind) {
+                break;
+            }
+        }
+
+        //
+        // concatenate non text child items
+        //
+        if (nodeKind != NSXMLTextKind) {
+            return [self attributedStringForElement:xe withObject:object];
+        }
+    }
+    
+    NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:nil];
+
     //
-    // get the element string value and operate on that
+    // get the node string value and operate on that
     //
-    NSString *text = [xe stringValue];
+    NSString *text = [xn stringValue];
     if (!text || [text tspb_isEmpty]) {
         return resultString;
     }
@@ -899,25 +952,28 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     //
     // apply the Y aggregators if defined
     //
-    NSMutableArray *aggregatorStack = self.stacks[TSKeyYIncrement];
-    if (aggregatorStack.count > 0) {
-        
-        TSPageDoubleAggregator *aggregator = [aggregatorStack tspb_stackPeek];
-        double y = aggregator.base + aggregator.index * aggregator.multiplier;
-        [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
-        
-    } else {
-        
-        aggregatorStack = self.stacks[TSKeyYSpacing];
+    NSArray *pushedAttributes = nil;
+    if (xe) {
+        NSMutableArray *aggregatorStack = self.stacks[TSKeyYIncrement];
         if (aggregatorStack.count > 0) {
-            TSPageSpacingAggregator *aggregator = [aggregatorStack tspb_stackPeek];
-            double y = aggregator.base;
+            
+            TSPageDoubleAggregator *aggregator = [aggregatorStack tspb_stackPeek];
+            double y = aggregator.base + aggregator.index * aggregator.multiplier;
             [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
+            
+        } else {
+            
+            aggregatorStack = self.stacks[TSKeyYSpacing];
+            if (aggregatorStack.count > 0) {
+                TSPageSpacingAggregator *aggregator = [aggregatorStack tspb_stackPeek];
+                double y = aggregator.base;
+                [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
+            }
         }
+        
+        // push element attributes onto the stack
+        pushedAttributes = [self pushAttributesForElement:xe];
     }
-    
-    // push element attributes onto the stack
-    NSArray *pushedAttributes = [self pushAttributesForElement:xe];
     
     // create attributed string based on the current styles on the stack
     resultString = [[NSMutableAttributedString alloc] initWithString:text attributes:self.currentStringAttributes];

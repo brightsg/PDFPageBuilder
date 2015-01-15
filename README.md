@@ -125,6 +125,10 @@ __Text__ - Insert a text item based on the value of the element attributes.
 
 		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N02}</Text>
 
+__Tick__ - Insert a textual tick item based on the value of the element attributes.
+
+		<Tick X="141.8" Y="76.059" Width="4.727" Height="5.707" Property="IsApplicable" />
+
 __True__ - The elements content will be rendered if the enclosing Condition expression evaluates to true.
 
 		<Condition Expression="IsLogoIncluded">
@@ -193,9 +197,10 @@ __Name__ - Identifies a named constant.
 
 		<Constant Name="NumberPerPage" Value="2" />
 
-__Property__ - An attribute name to be used when pushing or popping.
+__Property__ - Specifies an attribute property name to be used when pushing or popping. Can also define an object property name.
 
 		<Push Property="FontFamily" Value="Helvetica" />
+		<Tick X="141.8" Y="76.059" Width="4.727" Height="5.707" Property="IsApplicable" />
 
 __Source__ - An image source.
 
