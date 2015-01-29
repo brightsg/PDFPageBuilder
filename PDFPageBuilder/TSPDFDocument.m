@@ -126,14 +126,20 @@
 - (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings
 {
 
-    // Configure the print NSPrintInfo
+    // get the default NSPrintInfo object
     NSDictionary* defaultValues = [[NSPrintInfo sharedPrintInfo] dictionary];
     NSMutableDictionary* printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
     NSPrintInfo* printInfo = [[NSPrintInfo alloc] initWithDictionary: printInfoDictionary];
     
+    // apply default overrides
+    printInfo.topMargin = 0;
+    printInfo.rightMargin = 0;
+    printInfo.bottomMargin = 0;
+    printInfo.leftMargin = 0;
     printInfo.verticallyCentered = NO;
     printInfo.horizontallyCentered = NO;
 
+    // add custom settings - adding to the dict change sthe receiver's properties
     [[printInfo dictionary] addEntriesFromDictionary:printSettings];
     
     // set orientation
