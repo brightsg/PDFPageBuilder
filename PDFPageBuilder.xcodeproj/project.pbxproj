@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB22FF461A928B8900D971EA /* TSPageNumberFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = AB22FF441A928B8900D971EA /* TSPageNumberFormatter.h */; };
+		AB22FF471A928B8900D971EA /* TSPageNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB22FF451A928B8900D971EA /* TSPageNumberFormatter.m */; };
 		ABD2518F1A4994DD00BB4BFC /* PDFPageBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */; };
 		ABD251961A4994DD00BB4BFC /* PDFPageBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251951A4994DD00BB4BFC /* PDFPageBuilderTests.m */; };
 		ABD251DB1A49969C00BB4BFC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251DA1A49969C00BB4BFC /* Cocoa.framework */; };
@@ -85,6 +87,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AB22FF441A928B8900D971EA /* TSPageNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageNumberFormatter.h; sourceTree = "<group>"; };
+		AB22FF451A928B8900D971EA /* TSPageNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageNumberFormatter.m; sourceTree = "<group>"; };
 		ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDFPageBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2518E1A4994DD00BB4BFC /* PDFPageBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFPageBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD251941A4994DD00BB4BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../PDFPageBuilderTests/Info.plist; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 				ABF40C111A49B8D30070368E /* TSPDFPage.h */,
 				ABF40C121A49B8D30070368E /* TSPDFPage.m */,
 				ABF40C321A49B8FA0070368E /* PDFPageBuilder.h */,
+				AB22FF441A928B8900D971EA /* TSPageNumberFormatter.h */,
+				AB22FF451A928B8900D971EA /* TSPageNumberFormatter.m */,
 			);
 			path = PDFPageBuilder;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				ABF40C151A49B8D30070368E /* NSColor+PageBuilder.h in Headers */,
 				ABF40C221A49B8D30070368E /* TSPageBuilder.h in Headers */,
 				ABF40C241A49B8D30070368E /* TSPageDoubleAggregator.h in Headers */,
+				AB22FF461A928B8900D971EA /* TSPageNumberFormatter.h in Headers */,
 				ABF40C1F1A49B8D30070368E /* NSXMLElement+PageBuilder.h in Headers */,
 				ABF40C1B1A49B8D30070368E /* NSRegularExpression+PageBuilder.h in Headers */,
 				ABF40C171A49B8D30070368E /* NSDate+PageBuilder.h in Headers */,
@@ -495,6 +502,7 @@
 				ABF40C1C1A49B8D30070368E /* NSRegularExpression+PageBuilder.m in Sources */,
 				ABF40C2D1A49B8D30070368E /* TSPageTextItem.m in Sources */,
 				ABF40C251A49B8D30070368E /* TSPageDoubleAggregator.m in Sources */,
+				AB22FF471A928B8900D971EA /* TSPageNumberFormatter.m in Sources */,
 				ABF40C1A1A49B8D30070368E /* NSMutableArray+PageBuilder.m in Sources */,
 				ABF40C141A49B8D30070368E /* NSAttributedString+PageBuilder.m in Sources */,
 				ABF40C271A49B8D30070368E /* TSPageImageItem.m in Sources */,

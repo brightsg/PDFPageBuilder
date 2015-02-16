@@ -34,6 +34,7 @@
 #import "TSPageBuilder.h"
 #import "TSPageDoubleAggregator.h"
 #import "TSPageSpacingAggregator.h"
+#import "TSPageNumberFormatter.h"
 
 // categories
 #import "NSString+PageBuilder.h"
@@ -823,10 +824,11 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
             
             stringValue = @"";
             
-        } else if ([value isKindOfClass:[NSDecimalNumber class]]) {
+        } else if ([value isKindOfClass:[NSNumber class]]) {
             
             // use the valueFormat
-            stringValue = [value description];
+            TSPageNumberFormatter *formatter = [[TSPageNumberFormatter alloc] initWithWPFStyleFormatString:valueFormat];
+            stringValue = [formatter stringFromNumber:value];
             
         } else if ([value isKindOfClass:[NSDate class]]) {
             

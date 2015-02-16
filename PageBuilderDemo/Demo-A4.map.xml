@@ -46,25 +46,25 @@
 
 	<ForEach Enumerable="Box1Details" Text.Y="38.064" Text.YSpacing="0">
 		<Text X="12" Width="40" Foreground="404142">{Key}</Text>
-		<Text X="12" Width="57.667" TextAlignment="Right" FontFamily="Arial">{Value}</Text>
+        <Text X="12" Width="57.667" TextAlignment="Right" FontFamily="Arial">{Value}</Text>
 	</ForEach>
 
 	<ForEach Enumerable="Box2Details" Text.Y="38.064" Text.YSpacing="0">
 		<Text X="76.167" Width="40" Foreground="404142">{Key}</Text>
-		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N02}</Text>
+		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N2}</Text>
 	</ForEach>
 
 	<ForEach Enumerable="Box3Details" Text.Y="38.064" Text.YSpacing="0">
 		<Text X="140.333" Width="40" Foreground="404142">{Key}</Text>
-		<Text X="140.333" Width="57.667" TextAlignment="Right" FontFamily="Times">£{Value:N02}</Text>
+		<Text X="140.333" Width="57.667" TextAlignment="Right" FontFamily="Times">£{Value:N3}</Text>
 	</ForEach>
 
 	<Push Property="TextVerticalAlignment" Value="Bottom" />
 	<Push Property="FontStyle" Value="Italic" />
 	<Text X="76.167" Y="28.905" Width="57.667" Height="51.167" Foreground="404142">Total</Text>
-	<Text X="76.167" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box2Total:N02}</Text>
+	<Text X="76.167" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box2Total:N2}</Text>
 	<Text X="140.333" Y="28.905" Width="57.667" Height="51.167" Foreground="404142">Total</Text>
-	<Text X="140.333" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box3Total:N02}</Text>
+	<Text X="140.333" Y="28.905" Width="57.667" Height="51.167" TextAlignment="Right">£{Box3Total:N3}</Text>
 	<Pop Property="FontStyle" />
 	<Pop Property="TextVerticalAlignment" />
 
