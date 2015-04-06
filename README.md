@@ -124,6 +124,14 @@ __Run__ - Enables the concatenation of separate text segments within an enclosin
 __Text__ - Insert a text item based on the value of the element attributes.
 
 		<Text X="76.167" Width="57.667" TextAlignment="Right" FontFamily="Arial">£{Value:N02}</Text>
+		
+		<Text X="140" Y="100" Width="60" Height="20" LineHeight="13.4">
+			{AddressLine1}
+			{AddressLine2}
+			{AddressLine3}
+			{AddressLine4}
+			{PostCode}
+		</Text>
 
 __Tick__ - Insert a textual tick item based on the value of the element attributes.
 
