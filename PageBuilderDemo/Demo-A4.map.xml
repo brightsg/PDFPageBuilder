@@ -75,11 +75,14 @@
 		<Text X="12" Width="57.667" TextAlignment="Right">{Value}</Text>
 	</ForEach>
 
-	<ForEach Enumerable="Box5Details" Text.Y="98.491" Text.YSpacing="0">
-		<Text X="76.167" Width="40" Foreground="404142">{Key}</Text>
-		<Text X="76.167" Width="57.667" TextAlignment="Right">{Value}</Text>
-	</ForEach>
-
+    <Text X="76.167" Y="98.491" Width="80" Height="21" LineHeight="13.4">
+        {Box5AddressLine1}
+        {Box5AddressLine2}
+        {Box5AddressLine3}
+        {Box5AddressLine4}
+        {Box5PostCode}
+    </Text>
+    
 	<Text X="140.333" Y="98.582" Width="57.667" Height="30.65" TextAlignment="Center" TextVerticalAlignment="Center">
         <Run FontSize="24">{Box6Content.Title}</Run>
 		<Condition Expression="IsBox6Sub1 OR IsBox6Sub2">

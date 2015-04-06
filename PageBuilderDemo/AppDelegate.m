@@ -134,18 +134,16 @@
                             @{@"Key" : @"Key 5 is quite long too", @"Value" : @"Fish"},
                             ],
                     
-                    @"Box5Details" : @[
-                            @{@"Key" : @"Key 1", @"Value" : @"Alpha"},
-                            @{@"Key" : @"Key 2", @"Value" : @"Bravo"},
-                            @{@"Key" : @"Key 3", @"Value" : @"Charlie"},
-                            @{@"Key" : @"Key 4", @"Value" : @"Delta"},
-                            ],
+                    @"Box5AddressLine1" : @"Henry Noodles",
+                    @"Box5AddressLine2" : @"The Willows",
+                    @"Box5AddressLine3" : @"",
+                    @"Box5AddressLine4" : @" ",
+                    @"Box5PostCode" : @"ZZO NOP",
                     
                     @"Box6Content" : @{ @"Title" : @"This is Big!", @"Sub Content 1" : @"sub 1"},
                     @"IsBox6Sub1" : @YES,
                     @"ShowCredits" : @YES
                     };
-
     
     // repeat the object
     return @[object, object, object];

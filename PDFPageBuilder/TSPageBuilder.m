@@ -547,7 +547,8 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         objectArray = objEnumerable;
         
     } else {
-        NSAssert(NO, @"Don't know how to iterate over object : %@", objEnumerable);
+        // no data for key
+        return;
     }
     
     //
@@ -931,14 +932,42 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
         return resultString;
     }
     
+    // ensure line endings are normalised
+    text = [text tspb_normaliseLineEndings];
+
+    /*
+     
+     normalise \n{Space...}
+     we do this to support constructs like the following while keeping text as left aligned as possible.
+    
+     <Text>
+        {Key1}
+        {Key2}
+     </text>
+     
+    */
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\n\\s+" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSAssert(!error, @"regex error");
+    text = [regex stringByReplacingMatchesInString:text options:0 range:NSMakeRange(0, [text length]) withTemplate:@"\n"];
+
     //
     // Replace {key} values in text string from object
     //
     text = [self replaceKeysInString:text fromObject:object];
     
-    // ensure we are normalised
-    text = [text tspb_normaliseLineEndings];
-    
+    /*
+     
+     normalise \n\n...
+     we do this to keep text as vertially compressed as possible.
+     empty lines can be rendered by specifying " " as a key value.
+
+     */
+    regex = [NSRegularExpression regularExpressionWithPattern:@"\n{2,}" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSAssert(!error, @"regex error");
+    text = [regex stringByReplacingMatchesInString:text options:0 range:NSMakeRange(0, [text length]) withTemplate:@"\n"];
+
     // reject empty text
     if (!text || text.tspb_isEmpty) {
         return resultString;
