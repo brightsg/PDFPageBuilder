@@ -419,7 +419,7 @@
 		ABD2517A1A4994DD00BB4BFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Thesaurus Software";
 				TargetAttributes = {
 					ABD251821A4994DD00BB4BFC = {
