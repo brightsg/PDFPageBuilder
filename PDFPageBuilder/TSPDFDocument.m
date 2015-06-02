@@ -126,9 +126,10 @@
 - (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings
 {
 
-    // get the default NSPrintInfo object
+    // get a copy of the default NSPrintInfo object
     NSDictionary* defaultValues = [[NSPrintInfo sharedPrintInfo] dictionary];
     NSMutableDictionary* printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
+    
     NSPrintInfo* printInfo = [[NSPrintInfo alloc] initWithDictionary: printInfoDictionary];
     
     // apply default overrides
