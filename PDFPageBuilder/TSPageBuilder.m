@@ -714,6 +714,11 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     NSString *propertyName = [[xe attributeForName:@"Property"] stringValue];
     if (propertyName) {
         ticked = [[object valueForKey:propertyName] boolValue];
+        
+        NSString *takeInverse = [[[xe attributeForName:@"IsInverse"] stringValue] lowercaseString];
+        if ([takeInverse isEqualToString:@"true"]) {
+            ticked = !ticked;
+        }
     }
     
     if (ticked) {
