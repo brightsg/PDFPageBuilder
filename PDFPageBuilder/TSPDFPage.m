@@ -114,7 +114,7 @@
     // contract
     NSAssert(object, @"Object is nil");
     NSAssert(url, @"Mapping url is nil");
-    NSAssert([[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:NO], @"Mapping url not found : %@", url);
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:NULL], @"Mapping url not found : %@", url);
     
     // load the XML document data map
     NSError *error = nil;
@@ -134,7 +134,7 @@
 {
     // contract
     NSAssert(url, @"Mapping url is nil");
-    NSAssert([[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:NO], @"Mapping url not found : %@", url);
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath:[url path] isDirectory:NULL], @"Mapping url not found : %@", url);
     
     // load the XML document data map
     NSError *error = nil;
