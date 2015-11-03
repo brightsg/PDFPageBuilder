@@ -148,7 +148,7 @@
         PDFPage *page = [self pageAtIndex:0];
         NSSize pageSize = [page boundsForBox:kPDFDisplayBoxMediaBox].size;
         BOOL isLandscape = [page rotation] % 180 == 90 ? pageSize.height > pageSize.width : pageSize.width > pageSize.height;
-        [printInfo setOrientation:isLandscape ? NSLandscapeOrientation : NSPortraitOrientation];
+        [printInfo setOrientation:isLandscape ? NSPaperOrientationLandscape : NSPaperOrientationPortrait];
     }
     
     

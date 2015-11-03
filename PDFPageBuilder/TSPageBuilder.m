@@ -1242,7 +1242,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
             
         case TSStyleTextVerticalAlignment:
         {
-            NSTextAlignment alignment = NSLayoutAttributeTop;
+            NSLayoutAttribute alignment = NSLayoutAttributeTop;
             if ([value isEqualToString:@"Top"]) {
                 
                 alignment = NSLayoutAttributeTop;
@@ -1267,7 +1267,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
             
         case TSStyleTextAlignment:
         {
-            NSTextAlignment alignment = NSLayoutAttributeLeft;
+            NSLayoutAttribute alignment = NSLayoutAttributeLeft;
             if ([value isEqualToString:@"Left"]) {
                 
                 alignment = NSLayoutAttributeLeft;
