@@ -32,8 +32,6 @@
     self = [super initWithRect:rect];
     if (self) {
         _image = image;
-        
-        _image.flipped = YES;
     }
     
     return self;
@@ -45,7 +43,7 @@
 - (void)drawContent
 {
     // draw the image in the rect
-    [self.image drawInRect:self.drawRect fromRect:self.imageRect operation:NSCompositeSourceOver fraction:1.0];
+    [self.image drawInRect:self.drawRect fromRect:self.imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:NULL];
 }
 
 #pragma mark -
