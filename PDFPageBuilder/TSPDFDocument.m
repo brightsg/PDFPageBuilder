@@ -69,7 +69,7 @@
 - (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize
 {
     // get page size in MM
-    NSSize size = NSMakeSize(-1, -1);
+    NSSize size;
     switch (pageSize) {
         case TSPageSizeA4:
         {
