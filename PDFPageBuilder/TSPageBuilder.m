@@ -143,16 +143,47 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
 }
 
 #pragma mark -
-#pragma mark Numeric support
+#pragma mark Formatter support
+
+static NSNumberFormatter *m_decimalNumberFormatter = nil;
 
 + (NSNumberFormatter *)decimalNumberFormatter
 {
-    static NSNumberFormatter *formatter = nil;
-    if (!formatter) {
-        formatter = [NSNumberFormatter new];
-        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // this assumes we will only be running on the main thread
+    if ([NSThread currentThread] != [NSThread mainThread]) {
+        NSLog(@"This code unexpectedly called not on the main thread.");
     }
-    return formatter;
+    
+    if (!m_decimalNumberFormatter) {
+        m_decimalNumberFormatter = [NSNumberFormatter new];
+        m_decimalNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    }
+    return m_decimalNumberFormatter;
+}
+
++ (void)setDecimalNumberFormatter:(NSNumberFormatter *)formatter
+{
+    m_decimalNumberFormatter = formatter;
+}
+
+static NSDateFormatter *m_dateFormatter = nil;
+
++ (NSDateFormatter *)dateFormatter
+{
+    // this assumes we will only be running on the main thread
+    if ([NSThread currentThread] != [NSThread mainThread]) {
+        NSLog(@"This code unexpectedly called not on the main thread.");
+    }
+    
+    if (!m_dateFormatter) {
+        m_dateFormatter = [NSDateFormatter new];
+    }
+    return m_dateFormatter;
+}
+
++ (void)setDateFormatter:(NSDateFormatter *)formatter
+{
+    m_dateFormatter = formatter;
 }
 
 #pragma mark -

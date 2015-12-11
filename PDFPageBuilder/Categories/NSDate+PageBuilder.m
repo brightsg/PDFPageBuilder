@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+PageBuilder.h"
+#import "TSPageBuilder.h"
 
 @implementation NSDate (PageBuilder)
 
@@ -14,7 +15,7 @@
 // http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 - (NSString *)tspb_dateStringWithFormat:(NSString *)format
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [TSPageBuilder dateFormatter];
     [dateFormatter setDateFormat:format];
     NSString *dateString = [dateFormatter stringFromDate:self];
     

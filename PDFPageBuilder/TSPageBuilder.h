@@ -184,4 +184,32 @@ extern NSString *TSKeyProperty;
  */
 @property (strong,readonly) NSMutableDictionary *elementRenderDictionary;
 
+/*!
+ 
+ Decimal number formatter getter.
+ 
+ */
++ (NSNumberFormatter *)decimalNumberFormatter;
+
+/*!
+ 
+ Decimal number formatter setter.
+ 
+ */
++ (void)setDecimalNumberFormatter:(NSNumberFormatter *)formatter;
+
+/*!
+ 
+ Date formatter getter.
+ 
+ */
++ (NSDateFormatter *)dateFormatter;
+
+/*!
+ 
+ Date formatter setter.
+ 
+ */
++ (void)setDateFormatter:(NSDateFormatter *)formatter;
+
 @end
