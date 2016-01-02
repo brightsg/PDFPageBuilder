@@ -149,9 +149,11 @@ static NSNumberFormatter *m_decimalNumberFormatter = nil;
 
 + (NSNumberFormatter *)decimalNumberFormatter
 {
-    // this assumes we will only be running on the main thread
+    // the static formatter is only safely available on the main thread
     if ([NSThread currentThread] != [NSThread mainThread]) {
-        NSLog(@"This code unexpectedly called not on the main thread.");
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        return formatter;
     }
     
     if (!m_decimalNumberFormatter) {
@@ -170,9 +172,10 @@ static NSDateFormatter *m_dateFormatter = nil;
 
 + (NSDateFormatter *)dateFormatter
 {
-    // this assumes we will only be running on the main thread
+    // the static formatter is only safely available on the main thread
     if ([NSThread currentThread] != [NSThread mainThread]) {
-        NSLog(@"This code unexpectedly called not on the main thread.");
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        return formatter;
     }
     
     if (!m_dateFormatter) {
