@@ -159,7 +159,7 @@
     if (printOperation) {
         [printOperation setShowsPrintPanel:YES];
         [printOperation setShowsProgressPanel:YES];
-        printOperation.canSpawnSeparateThread = YES;
+        printOperation.canSpawnSeparateThread = NO;
         
         // configure the operation print panel
         NSPrintPanel *printPanel = [printOperation printPanel];
