@@ -127,8 +127,8 @@
 {
 
     // get a copy of the default NSPrintInfo object
-    NSDictionary* defaultValues = [[NSPrintInfo sharedPrintInfo] dictionary];
-    NSMutableDictionary* printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
+    NSDictionary *defaultValues = [[NSPrintInfo sharedPrintInfo] dictionary];
+    NSMutableDictionary *printInfoDictionary = [NSMutableDictionary dictionaryWithDictionary:defaultValues];
     
     NSPrintInfo* printInfo = [[NSPrintInfo alloc] initWithDictionary: printInfoDictionary];
     
@@ -139,8 +139,9 @@
     printInfo.leftMargin = 0;
     printInfo.verticallyCentered = NO;
     printInfo.horizontallyCentered = NO;
-
-    // add custom settings - adding to the dict change sthe receiver's properties
+    printInfo.horizontalPagination = NSFitPagination;
+    
+    // add custom settings - adding to the dict changes the receiver's properties
     [[printInfo dictionary] addEntriesFromDictionary:printSettings];
     
     // set orientation
@@ -150,7 +151,6 @@
         BOOL isLandscape = [page rotation] % 180 == 90 ? pageSize.height > pageSize.width : pageSize.width > pageSize.height;
         [printInfo setOrientation:isLandscape ? NSPaperOrientationLandscape : NSPaperOrientationPortrait];
     }
-    
     
     // get the print operation
     // this is not mentioned in the docs but is in the header, along with a few other functions
