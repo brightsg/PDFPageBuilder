@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
  PDF document will layout page.
  
  */
-- (void)pdfDocument:(TSPDFDocument *)document willLayoutPage:(TSPDFPage *)page;
+- (void)pdfDocument:(nonnull TSPDFDocument *)document willLayoutPage:(nonnull TSPDFPage *)page;
 
 @end
 
@@ -38,34 +38,34 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
  Document delegate.
  
  */
-@property (weak) id <TSPDFDocumentDelegate, TSPDFPageDelegate, TSPageBuilderDelegate> delegate;
+@property (weak, nonatomic, nullable) id <TSPDFDocumentDelegate, TSPDFPageDelegate, TSPageBuilderDelegate> delegate;
 
 /*!
  
  Layout page items for object based on the contents of the TSPageBuilder xml map URL.
  
  */
-- (void)layoutPageItemsForObject:(id)object withMapURL:(NSURL *)url pageIndex:(NSUInteger)pageIndex;
+- (void)layoutPageItemsForObject:(nonnull id)object withMapURL:(nonnull NSURL *)url pageIndex:(NSUInteger)pageIndex;
 
 /*!
  
  Insert new page with default size at index within the document.
  
  */
-- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx;
+- (nonnull TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx;
 
 /*!
  
  Insert new page with specified size at index within the document.
  
  */
-- (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize;
+- (nonnull TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize;
 
 /*!
  
  Returns a print operation suitable for printing the PDF document.
  
  */
-- (NSPrintOperation *)printOperationWithSettings:(NSDictionary *)printSettings;
+- (nonnull NSPrintOperation *)printOperationWithSettings:(nonnull NSDictionary *)printSettings;
 
 @end

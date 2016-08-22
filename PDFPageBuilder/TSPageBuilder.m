@@ -1515,7 +1515,12 @@ static NSDateFormatter *m_dateFormatter = nil;
 
 - (void)drawPageItems
 {
-    [self loadGraphicsContext];
+    [self drawPageItemsToContext:nil];
+}
+
+- (void)drawPageItemsToContext:(CGContextRef)context
+{
+    [self loadGraphicsContext:context];
 
     // draw all map items
     for (TSPageItem *mapItem in self.pageItems) {
@@ -1529,18 +1534,21 @@ static NSDateFormatter *m_dateFormatter = nil;
         }
     }
 
-    [self unloadGraphicsContext];
+   [self unloadGraphicsContext];
 }
 
-- (void)loadGraphicsContext
+- (void)loadGraphicsContext:(CGContextRef)context
 {
     NSAssert(!self.gcIsLoaded, @"duplicate call to page graphics context loader");
+    
+    if (!context) {
+        context = [[NSGraphicsContext currentContext] graphicsPort];
+    }
     
     // life is much easier if we use a flipped co-ordinate system.
     // NSLayoutManager expects a flipped context.
     [NSGraphicsContext saveGraphicsState];
-    NSGraphicsContext *flippedGC = [NSGraphicsContext graphicsContextWithGraphicsPort:[[NSGraphicsContext currentContext] graphicsPort]
-                                                                              flipped:YES];
+    NSGraphicsContext *flippedGC = [NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:YES];
     [NSGraphicsContext setCurrentContext:flippedGC];
     
     // define the flip transform

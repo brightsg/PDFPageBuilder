@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "530E0FD279CC69D341E819E02336B1830BED26E4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "530E0FD279CC69D341E819E02336B1830BED26E4" : 0,
+    "B93044F2DDFB868A158FCBABECCA5F645C430F3C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D3F97026-8A61-42BE-AB5F-1B430694DE65",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "530E0FD279CC69D341E819E02336B1830BED26E4" : "TSPageBuilder",
+    "B93044F2DDFB868A158FCBABECCA5F645C430F3C" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PDFPageBuilder",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PDFPageBuilder.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ThesaurusSoftware\/TSPageBuilder",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "530E0FD279CC69D341E819E02336B1830BED26E4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:thesaurussoftware\/brightpay.osx.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B93044F2DDFB868A158FCBABECCA5F645C430F3C"
+    }
+  ]
+}

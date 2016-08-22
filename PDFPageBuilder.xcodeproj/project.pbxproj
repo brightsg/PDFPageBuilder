@@ -419,7 +419,7 @@
 		ABD2517A1A4994DD00BB4BFC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Thesaurus Software";
 				TargetAttributes = {
 					ABD251821A4994DD00BB4BFC = {
@@ -430,6 +430,9 @@
 					};
 					ABD42A1D1A49F27F00870D65 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 963FKU52U4;
+						DevelopmentTeamName = "Thesaurus Software Ltd";
+						ProvisioningStyle = Automatic;
 					};
 					ABD42A2F1A49F27F00870D65 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -591,8 +594,10 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -638,6 +643,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -665,6 +671,7 @@
 				INFOPLIST_FILE = PDFPageBuilder/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PDFPageBuilder;
 				SKIP_INSTALL = YES;
 			};
@@ -682,6 +689,7 @@
 				INFOPLIST_FILE = PDFPageBuilder/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PDFPageBuilder;
 				SKIP_INSTALL = YES;
 			};
@@ -701,6 +709,7 @@
 				);
 				INFOPLIST_FILE = PDFPageBuilderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PDFPageBuilderTests;
 			};
 			name = Debug;
@@ -715,6 +724,7 @@
 				);
 				INFOPLIST_FILE = PDFPageBuilderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = PDFPageBuilderTests;
 			};
 			name = Release;
@@ -723,7 +733,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -731,6 +740,7 @@
 				);
 				INFOPLIST_FILE = PageBuilderDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 			};
@@ -740,10 +750,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PageBuilderDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 			};
@@ -764,6 +774,7 @@
 				);
 				INFOPLIST_FILE = PageBuilderDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PageBuilderDemo.app/Contents/MacOS/PageBuilderDemo";
@@ -781,6 +792,7 @@
 				);
 				INFOPLIST_FILE = PageBuilderDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesaurussoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PageBuilderDemo.app/Contents/MacOS/PageBuilderDemo";

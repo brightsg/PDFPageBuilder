@@ -98,12 +98,23 @@
     return [super boundsForBox:box];
     
 }
+
+// deprecated pre 10.12 method
 - (void)drawWithBox:(PDFDisplayBox)box
 {
     [super drawWithBox:box];
     
     // draw the page items
     [self.pageBuilder drawPageItems];
+}
+
+- (void)drawWithBox:(PDFDisplayBox)box toContext:(CGContextRef)context
+{
+    // Skim comments on this https://sourceforge.net/p/skim-app/bugs/1102/
+    [super drawWithBox:box toContext:context];
+    
+    // draw the page items
+    [self.pageBuilder drawPageItemsToContext:context];
 }
 
 #pragma mark -
