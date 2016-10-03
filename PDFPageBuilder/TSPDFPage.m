@@ -12,6 +12,9 @@
 #import "TSPageItem.h"
 
 @interface PDFPage()
+
+// undocumented method - ARC requires selectors to be defined.
+- (void)drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context;
 @end
 
 @interface TSPDFPage()
@@ -99,19 +102,20 @@
     
 }
 
-// deprecated pre 10.12 method
-- (void)drawWithBox:(PDFDisplayBox)box
+/*
+ See http://www.cocoabuilder.com/archive/cocoa/178803-pdfmarkupannotations-not-showing-when-drawing-pdfpage.html
+ http://stackoverflow.com/questions/38517984/displaying-pdf-files-using-the-pdfkit-interface/38739041#38739041
+ 
+ Before 10.12 - (void)drawWithBox:(PDFDisplayBox)box was called.
+ In 10.12 - (void)drawWithBox:(PDFDisplayBox)box toContext:(CGContextRef)context was defined.
+ However, on 10.12.0 NSPrintThumbnailView calls drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context not toContext:.
+ Both -drawWithBox: and -drawWithBox:toConext: call directly into -drawWithBox:inConext: so the only really effective place
+ to do our drawing is there, even though the method is largely undocumented.
+ 
+ */
+- (void)drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context
 {
-    [super drawWithBox:box];
-    
-    // draw the page items
-    [self.pageBuilder drawPageItems];
-}
-
-- (void)drawWithBox:(PDFDisplayBox)box toContext:(CGContextRef)context
-{
-    // Skim comments on this https://sourceforge.net/p/skim-app/bugs/1102/
-    [super drawWithBox:box toContext:context];
+    [super drawWithBox:box inContext:context];
     
     // draw the page items
     [self.pageBuilder drawPageItemsToContext:context];
