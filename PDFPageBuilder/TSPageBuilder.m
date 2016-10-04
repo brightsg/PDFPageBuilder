@@ -96,6 +96,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
 @property (strong) NSMutableDictionary *stacks;
 @property (strong) NSMutableArray *pageItems;
 @property (strong,nonatomic) NSRegularExpression *propertyRegex;
+@property (assign) BOOL gcIsLoaded;
 @property (strong,readwrite) NSDictionary *constantElementDictionary;
 @property (strong,nonatomic) NSMutableDictionary *constantElements;
 @property (strong,readwrite) NSMutableDictionary *elementRenderDictionary;
@@ -1519,27 +1520,8 @@ static NSDateFormatter *m_dateFormatter = nil;
 
 - (void)drawPageItemsToContext:(CGContextRef)context
 {
-    BOOL hasInitialNSGraphicsContext = NO;
-    
-    if ([NSGraphicsContext currentContext]) {
-        [NSGraphicsContext saveGraphicsState];
-        hasInitialNSGraphicsContext = YES;
-    }
-    else {
-        CGContextSaveGState(context);
-    }
-    
-    // life is much easier if we use a flipped co-ordinate system.
-    // NSLayoutManager expects a flipped NSGraphicsContext to be present.
-    NSGraphicsContext *flippedGC = [NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:YES];
-    [NSGraphicsContext setCurrentContext:flippedGC];
-    
-    // define the flip transform
-    NSAffineTransform* xform = [NSAffineTransform transform];
-    [xform translateXBy:0.0 yBy:self.mediaBoxRect.size.height];
-    [xform scaleXBy:1.0 yBy:-1.0];
-    [xform concat];
-    
+    [self loadGraphicsContext:context];
+
     // draw all map items
     for (TSPageItem *mapItem in self.pageItems) {
         [mapItem draw];
@@ -1552,13 +1534,39 @@ static NSDateFormatter *m_dateFormatter = nil;
         }
     }
 
-    if (hasInitialNSGraphicsContext) {
-        [NSGraphicsContext restoreGraphicsState];
-    }
-    else {
-        CGContextRestoreGState(context);
-    }
+   [self unloadGraphicsContext];
 }
 
+- (void)loadGraphicsContext:(CGContextRef)context
+{
+    NSAssert(!self.gcIsLoaded, @"duplicate call to page graphics context loader");
+    
+    if (!context) {
+        context = [[NSGraphicsContext currentContext] graphicsPort];
+    }
+    
+    // life is much easier if we use a flipped co-ordinate system.
+    // NSLayoutManager expects a flipped context.
+    [NSGraphicsContext saveGraphicsState];
+    NSGraphicsContext *flippedGC = [NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:YES];
+    [NSGraphicsContext setCurrentContext:flippedGC];
+    
+    // define the flip transform
+    NSAffineTransform* xform = [NSAffineTransform transform];
+    [xform translateXBy:0.0 yBy:self.mediaBoxRect.size.height];
+    [xform scaleXBy:1.0 yBy:-1.0];
+    [xform concat];
+
+    self.gcIsLoaded = YES;
+}
+
+- (void)unloadGraphicsContext
+{
+    NSAssert(self.gcIsLoaded, @"trying to unload page graphics context when none loaded");
+
+    [NSGraphicsContext restoreGraphicsState];
+    
+    self.gcIsLoaded = NO;
+}
 
 @end
