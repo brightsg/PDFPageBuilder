@@ -144,7 +144,6 @@ extern NSString *TSKeyProperty;
  Draw the page items
  
  */
-- (void)drawPageItems;
 - (void)drawPageItemsToContext:(CGContextRef)context;
 
 /*!
