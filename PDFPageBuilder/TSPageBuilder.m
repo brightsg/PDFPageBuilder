@@ -1514,11 +1514,14 @@ static NSDateFormatter *m_dateFormatter = nil;
 
 - (void)drawPageItemsToContext:(CGContextRef)context
 {
-    CGContextSaveGState(context);
-    
+    // On 10.12 this method can be called with [NSGraphicsContext currentContext] = nil.
+    // Perhaps the call is made outside of the drawRect: call chain.
     BOOL hasInitialNSGraphicsContext = [NSGraphicsContext currentContext] ? YES : NO;
     if (hasInitialNSGraphicsContext) {
         [NSGraphicsContext saveGraphicsState];
+    }
+    else {
+        CGContextSaveGState(context);
     }
 
     // life is much easier if we use a flipped co-ordinate system.
@@ -1550,9 +1553,9 @@ static NSDateFormatter *m_dateFormatter = nil;
     }
     else {
         [NSGraphicsContext setCurrentContext:nil];
+        CGContextRestoreGState(context);
     }
     
-    CGContextRestoreGState(context);
 }
 
 @end
