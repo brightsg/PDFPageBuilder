@@ -18,8 +18,15 @@
 @end
 
 @interface TSPDFPage()
+
+// collections
 @property (strong,nonatomic) NSArray *pageItems;
+
+// objects
 @property (strong,readwrite,nonatomic) TSPageBuilder *pageBuilder;
+
+// primitives
+@property (assign) BOOL didDrawPageItems;
 
 @end
 
@@ -109,16 +116,49 @@
  Before 10.12 - (void)drawWithBox:(PDFDisplayBox)box was called.
  In 10.12 - (void)drawWithBox:(PDFDisplayBox)box toContext:(CGContextRef)context was defined.
  However, on 10.12.0 NSPrintThumbnailView calls drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context not toContext:.
- Both -drawWithBox: and -drawWithBox:toConext: call directly into -drawWithBox:inConext: so the only really effective place
- to do our drawing is there, even though the method is largely undocumented.
+ Both -drawWithBox: and -drawWithBox:toContext: may call directly into -drawWithBox:inContext: but there are differences between both minor and patch versions.
+ 
+ This matters because failure here means a failure to render any of our page items.
+ The code below hopefully deals with all the encountered scenarios.
  
  */
+
+// Public - Called pre 10.12
+- (void)drawWithBox:(PDFDisplayBox)box
+{
+    self.didDrawPageItems = NO;
+    
+    [super drawWithBox:box];
+    
+    // draw the page items
+    if (!self.didDrawPageItems) {
+        [self.pageBuilder drawPageItemsToContext:nil];
+        self.didDrawPageItems = YES;
+    }
+}
+
+// Public - Called 10.12+ (may not be called during printing)
+- (void)drawWithBox:(PDFDisplayBox)box toContext:(CGContextRef)context
+{
+    self.didDrawPageItems = NO;
+    
+    [super drawWithBox:box toContext:context];
+    
+    // draw the page items
+    if (!self.didDrawPageItems) {
+        [self.pageBuilder drawPageItemsToContext:context];
+        self.didDrawPageItems = YES;
+    }
+}
+
+// Private - may or may not be called by the public drawWithBox: variants above
 - (void)drawWithBox:(PDFDisplayBox)box inContext:(CGContextRef)context
 {
     [super drawWithBox:box inContext:context];
     
     // draw the page items
     [self.pageBuilder drawPageItemsToContext:context];
+    self.didDrawPageItems = YES;
 }
 
 #pragma mark -
