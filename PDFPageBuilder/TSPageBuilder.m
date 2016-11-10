@@ -1515,7 +1515,7 @@ static NSDateFormatter *m_dateFormatter = nil;
 - (void)drawPageItemsToContext:(CGContextRef)context
 {
     // On 10.12 this method can be called with [NSGraphicsContext currentContext] = nil.
-    // Perhaps the call is made outside of the drawRect: call chain.
+    // In this the method is being called on a background thread outside of the NSView -drawRect: call chain.
     BOOL hasInitialNSGraphicsContext = [NSGraphicsContext currentContext] ? YES : NO;
     if (hasInitialNSGraphicsContext) {
         [NSGraphicsContext saveGraphicsState];
@@ -1524,6 +1524,10 @@ static NSDateFormatter *m_dateFormatter = nil;
         CGContextSaveGState(context);
     }
 
+    if (!context && hasInitialNSGraphicsContext) {
+        context = [[NSGraphicsContext currentContext] graphicsPort];
+    }
+    
     // life is much easier if we use a flipped co-ordinate system.
     // NSLayoutManager expects a flipped NSGraphicsContext to be defined -
     // without it layout fails.
