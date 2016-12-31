@@ -105,8 +105,8 @@
 {
     // we can modify the bounds if drawing is required
     // outside the default rect
-    return [super boundsForBox:box];
-    
+    NSRect bounds = [super boundsForBox:box];
+    return bounds;
 }
 
 /*

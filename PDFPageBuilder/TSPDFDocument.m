@@ -11,6 +11,38 @@
 
 @implementation TSPDFDocument
 
++ (instancetype)newEmptySinglePageDocumentWithPageSize:(NSSize)size
+{
+    NSRect ptsRect = NSMakeRect(0, 0, size.width, size.height);
+    NSView *view = [[NSView alloc] initWithFrame:ptsRect];
+    
+    //
+    NSData *pdfData = [view dataWithPDFInsideRect:ptsRect];
+    TSPDFDocument *pdfDocument = [[self alloc] initWithData:pdfData];
+    
+    return pdfDocument;
+}
+
++ (PDFPage *)newPageWithSize:(NSSize)size
+{
+    /* 
+     Prior to 10.12 it was possible to create a page as follows and then set the media bounds like so:
+     
+     TSPDFPage *pdfPage = [TSPDFPage new];
+     [pdfPage setMediaBoundsInMapUnits:mmSize];
+     
+     On 10.12+ the page generated thus does not display in the PDFView at the size specified for the Media bounds.
+     Hence the workaround below.
+     */
+    TSPDFDocument *pdfDocument = [self.class newEmptySinglePageDocumentWithPageSize:size];
+    
+    // get empty page
+    TSPDFPage *pdfPage = (id)[pdfDocument pageAtIndex:0];
+    [pdfDocument removePageAtIndex:0];
+    
+    return pdfPage;
+}
+
 #pragma mark -
 #pragma mark Lifecycle
 
@@ -69,17 +101,17 @@
 - (TSPDFPage *)insertNewPageAtIndex:(NSInteger)idx pageSize:(TSPageSize)pageSize
 {
     // get page size in MM
-    NSSize size;
+    NSSize mmSize;
     switch (pageSize) {
         case TSPageSizeA4:
         {
-            size = NSMakeSize(210, 297);
+            mmSize = NSMakeSize(210, 297);
             break;
         }
             
         case TSPageSizeA5:
         {
-            size = NSMakeSize(148, 210);
+            mmSize = NSMakeSize(148, 210);
             break;
         }
             
@@ -89,12 +121,10 @@
         }
     }
     
-    // create page
-    TSPDFPage *pdfPage = [TSPDFPage new];
+    // create new page
+    NSSize ptsSize = NSMakeSize(mmSize.width * TSPB_SCALE_MM_TO_PTS, mmSize.height * TSPB_SCALE_MM_TO_PTS);
+    TSPDFPage *pdfPage = (id)[self.class newPageWithSize:ptsSize];;
     pdfPage.delegate = self.delegate;
-    
-    // set media bounds to define page size
-    [pdfPage setMediaBoundsInMapUnits:size];
     
     // insert page into document
     [self insertPage:pdfPage atIndex:idx];
