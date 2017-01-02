@@ -83,6 +83,7 @@
     if (self) {
         text = [text tspb_attributedStringByTrimming:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         _attributedString = text;
+        _glyphRange = NSMakeRange(0, 0);
     }
     
     return self;
@@ -93,6 +94,14 @@
 
 - (void)doLayout
 {
+    // reset the glyph range
+    self.glyphRange = NSMakeRange(0, 0);
+
+    // some of the layout methods below raise if operating on a zero length string
+    if (!self.attributedString || self.attributedString.length == 0) {
+        return;
+    }
+    
     NSRect boundingRect = self.containerRect;
     
     // if no rect height defined then use default
