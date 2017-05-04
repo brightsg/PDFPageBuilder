@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
  Document delegate.
  
  */
-@property (weak, nonatomic, nullable) id <TSPDFDocumentDelegate, TSPDFPageDelegate, TSPageBuilderDelegate> delegate;
+//@property (weak, nonatomic, nullable) id <TSPDFDocumentDelegate, TSPDFPageDelegate, TSPageBuilderDelegate> delegate;
 
 /*!
  
