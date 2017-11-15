@@ -124,7 +124,7 @@
     // create new page
     NSSize ptsSize = NSMakeSize(mmSize.width * TSPB_SCALE_MM_TO_PTS, mmSize.height * TSPB_SCALE_MM_TO_PTS);
     TSPDFPage *pdfPage = (id)[self.class newPageWithSize:ptsSize];;
-    pdfPage.delegate = self.delegate;
+    pdfPage.delegate = (id <TSPDFPageDelegate, TSPageBuilderDelegate>)self.delegate;
     
     // insert page into document
     [self insertPage:pdfPage atIndex:idx];
@@ -139,11 +139,11 @@
 {    
     // get the required page
     TSPDFPage *pdfPage = (TSPDFPage *)[self pageAtIndex:pageIndex];
-    pdfPage.delegate = self.delegate;
+    pdfPage.delegate = (id <TSPDFPageDelegate, TSPageBuilderDelegate>)self.delegate;
     
     // inform the delegate
     if ([self.delegate respondsToSelector:@selector(pdfDocument:willLayoutPage:)]) {
-        [self.delegate pdfDocument:self willLayoutPage:pdfPage];
+        [(id)self.delegate pdfDocument:self willLayoutPage:pdfPage];
     }
     
     // map object properties to this page using the given map URL

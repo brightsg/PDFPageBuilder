@@ -72,7 +72,7 @@
     return _pageBuilder;
 }
 
-- (void)setDelegate:(id)delegate
+- (void)setDelegate:(id <TSPDFPageDelegate, TSPageBuilderDelegate>)delegate
 {
     _delegate = delegate;
     

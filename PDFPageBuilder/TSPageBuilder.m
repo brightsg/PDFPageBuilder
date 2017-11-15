@@ -345,7 +345,7 @@ static NSDateFormatter *m_dateFormatter = nil;
                     expressionResult |= varResult;
                     
                 } else {
-                    NSAssert(@"invalid boolean operation : %@", operationString);
+                    NSAssert(YES, @"invalid boolean operation : %@", operationString);
                 }
             }
 
