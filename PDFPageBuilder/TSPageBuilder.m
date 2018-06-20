@@ -218,6 +218,9 @@ static NSDateFormatter *m_dateFormatter = nil;
         // clients can modify if want to say specify fontsize in points.
         self.fontSizeAttributeScale = TSPB_SCALE_MM_TO_PTS;
         
+        self.textYIncrementAttributeScale = 1.0;
+        self.textYSpacingAttributeScale = 1.0;
+        
         // set geometry scale
         // the default input map geometry data is in millimetres so scale millimeters to points
         self.geometryAttributeScale = TSPB_SCALE_MM_TO_PTS;
@@ -593,7 +596,7 @@ static NSDateFormatter *m_dateFormatter = nil;
         
         TSPageDoubleAggregator *aggregator = [TSPageDoubleAggregator new];
         aggregator.index = 0;
-        aggregator.multiplier = [xe tspb_attributeDoubleValueForName:@"Text.YIncrement"];
+        aggregator.multiplier = [xe tspb_attributeDoubleValueForName:@"Text.YIncrement"] * self.textYIncrementAttributeScale;
         aggregator.base = [xe attributeForName:@"Text.Y"] ? [xe tspb_attributeDoubleValueForName:@"Text.Y"] : 0.0;
         
         aggregatorStack = self.stacks[TSKeyYIncrement];
@@ -605,7 +608,7 @@ static NSDateFormatter *m_dateFormatter = nil;
         
         TSPageSpacingAggregator *aggregator = [TSPageSpacingAggregator new];
         aggregator.usage = 0;
-        aggregator.offset = [xe tspb_attributeDoubleValueForName:@"Text.YSpacing"];
+        aggregator.offset = [xe tspb_attributeDoubleValueForName:@"Text.YSpacing"] * self.textYSpacingAttributeScale;
         aggregator.base = [xe attributeForName:@"Text.Y"] ? [xe tspb_attributeDoubleValueForName:@"Text.Y"] : 0.0;
         
         aggregatorStack = self.stacks[TSKeyYSpacing];

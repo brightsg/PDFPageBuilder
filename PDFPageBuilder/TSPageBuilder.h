@@ -100,6 +100,21 @@ extern NSString *TSKeyProperty;
  */
 @property (assign) CGFloat fontSizeAttributeScale;
 
+
+/**
+ 
+ Scale factor to be applied to Text.YIncrement attribute
+ 
+ */
+@property (assign) CGFloat textYIncrementAttributeScale;
+
+/**
+ 
+ Scale factor to be applied to Text.YSpacing attribute
+ 
+ */
+@property (assign) CGFloat textYSpacingAttributeScale;
+
 /*!
  
  Highlight page item containers. This is useful for resolving layout issues.

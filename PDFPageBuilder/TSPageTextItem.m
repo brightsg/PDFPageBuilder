@@ -103,6 +103,7 @@
     }
     
     NSRect boundingRect = self.containerRect;
+    //boundingRect.size.height = 0;
     
     // if no rect height defined then use default
     BOOL containerHasExplicitHeight = YES;
@@ -131,7 +132,7 @@
     // get rect used for actual glyph layout
     self.usedTextRect = [layoutManager usedRectForTextContainer:textContainer];
     
-    // if container has no explcit height then default to used text height
+    // if container has no explicit height then default to used text height
     if (!containerHasExplicitHeight) {
         boundingRect.size.height = self.usedTextRect.size.height;
     }
