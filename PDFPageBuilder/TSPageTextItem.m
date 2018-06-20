@@ -103,7 +103,6 @@
     }
     
     NSRect boundingRect = self.containerRect;
-    //boundingRect.size.height = 0;
     
     // if no rect height defined then use default
     BOOL containerHasExplicitHeight = YES;
