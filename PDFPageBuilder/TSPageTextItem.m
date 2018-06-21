@@ -8,6 +8,7 @@
 
 #import "TSPageTextItem.h"
 #import "NSAttributedString+PageBuilder.h"
+#import "NSMutableAttributedString+PageBuilder.h"
 
 @interface TSPageTextItem ()
 
@@ -123,10 +124,25 @@
     self.textStorage = [[NSTextStorage alloc] initWithAttributedString:self.attributedString];
     [self.textStorage addLayoutManager:layoutManager];
     
-    // do glyph layout
-    // NOTE: cannot quite get glyphRangeForBoundingRect configured correctly here
-    //self.glyphRange = [layoutManager glyphRangeForBoundingRect:boundingRect inTextContainer:textContainer];
-    self.glyphRange = [layoutManager glyphRangeForTextContainer:textContainer];
+    // size text to fit container
+    // TODO: make size to fit behaviour configurable
+    BOOL sizeToFit = YES;
+    CGFloat fontScaleFactor = 0.95;
+    CGFloat fontScale = 1;
+    do {
+        // do glyph layout to get range of glyphs that can be rendered in the container
+        self.glyphRange = [layoutManager glyphRangeForTextContainer:textContainer];
+        
+        // if can we render all glyphs into the text container then we are good to go
+        if (self.glyphRange.length == layoutManager.numberOfGlyphs || !sizeToFit || fontScale < 0.5) {
+            break;
+        }
+        
+        // reduce the font sizes and try again
+        fontScale *= fontScaleFactor;
+        [self.textStorage tspb_scaleFontSize:fontScaleFactor];
+        
+    } while (YES);
     
     // get rect used for actual glyph layout
     self.usedTextRect = [layoutManager usedRectForTextContainer:textContainer];

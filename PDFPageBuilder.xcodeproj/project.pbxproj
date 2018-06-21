@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AB22FF461A928B8900D971EA /* TSPageNumberFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = AB22FF441A928B8900D971EA /* TSPageNumberFormatter.h */; };
 		AB22FF471A928B8900D971EA /* TSPageNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB22FF451A928B8900D971EA /* TSPageNumberFormatter.m */; };
+		AB33686720DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = AB33686520DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.h */; };
+		AB33686820DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AB33686620DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.m */; };
 		ABD2518F1A4994DD00BB4BFC /* PDFPageBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */; };
 		ABD251961A4994DD00BB4BFC /* PDFPageBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD251951A4994DD00BB4BFC /* PDFPageBuilderTests.m */; };
 		ABD251DB1A49969C00BB4BFC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD251DA1A49969C00BB4BFC /* Cocoa.framework */; };
@@ -89,6 +91,8 @@
 /* Begin PBXFileReference section */
 		AB22FF441A928B8900D971EA /* TSPageNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPageNumberFormatter.h; sourceTree = "<group>"; };
 		AB22FF451A928B8900D971EA /* TSPageNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPageNumberFormatter.m; sourceTree = "<group>"; };
+		AB33686520DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+PageBuilder.h"; sourceTree = "<group>"; };
+		AB33686620DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+PageBuilder.m"; sourceTree = "<group>"; };
 		ABD251831A4994DD00BB4BFC /* PDFPageBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDFPageBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2518E1A4994DD00BB4BFC /* PDFPageBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFPageBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD251941A4994DD00BB4BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../PDFPageBuilderTests/Info.plist; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				ABF40BFF1A49B8D30070368E /* NSString+PageBuilder.m */,
 				ABF40C001A49B8D30070368E /* NSXMLElement+PageBuilder.h */,
 				ABF40C011A49B8D30070368E /* NSXMLElement+PageBuilder.m */,
+				AB33686520DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.h */,
+				AB33686620DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				ABF40C1B1A49B8D30070368E /* NSRegularExpression+PageBuilder.h in Headers */,
 				ABF40C171A49B8D30070368E /* NSDate+PageBuilder.h in Headers */,
 				ABF40C1D1A49B8D30070368E /* NSString+PageBuilder.h in Headers */,
+				AB33686720DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.h in Headers */,
 				ABF40C131A49B8D30070368E /* NSAttributedString+PageBuilder.h in Headers */,
 				ABF40C191A49B8D30070368E /* NSMutableArray+PageBuilder.h in Headers */,
 				ABF40C2A1A49B8D30070368E /* TSPageSpacingAggregator.h in Headers */,
@@ -510,6 +517,7 @@
 				ABF40C141A49B8D30070368E /* NSAttributedString+PageBuilder.m in Sources */,
 				ABF40C271A49B8D30070368E /* TSPageImageItem.m in Sources */,
 				ABF40C2F1A49B8D30070368E /* TSPDFDocument.m in Sources */,
+				AB33686820DBF2A2002A4707 /* NSMutableAttributedString+PageBuilder.m in Sources */,
 				ABF40C181A49B8D30070368E /* NSDate+PageBuilder.m in Sources */,
 				ABF40C291A49B8D30070368E /* TSPageItem.m in Sources */,
 				ABF40C201A49B8D30070368E /* NSXMLElement+PageBuilder.m in Sources */,
