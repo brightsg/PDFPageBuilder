@@ -99,6 +99,7 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
 @property (strong,readwrite) NSDictionary *constantElementDictionary;
 @property (strong,nonatomic) NSMutableDictionary *constantElements;
 @property (strong,readwrite) NSMutableDictionary *elementRenderDictionary;
+@property (strong) NSMutableArray<NSMutableArray <TSPageItem *> *> *containerElementCache;
 @end
 
 @implementation TSPageBuilder
@@ -616,7 +617,7 @@ static NSDateFormatter *m_dateFormatter = nil;
         
         aggregatorClass = [aggregator class];
     }
-    
+        
     //
     // FromIndex attribute
     //
@@ -635,11 +636,20 @@ static NSDateFormatter *m_dateFormatter = nil;
         elementToIndex = [xe tspb_attributeIntegerValueForName:@"ToIndex"];
     }
     
+    NSXMLNode *attrMaxVerticalSpace = [xe attributeForName:@"MaxVerticalSpace"];
+    if (attrMaxVerticalSpace) {
+        self.containerElementCache = [NSMutableArray arrayWithCapacity:20];
+    }
+    
     //
     // iterate over the object updating the aggregator as required
     //
     NSInteger itemIndex = 0;
     for (id item in objectArray) {
+        
+        if (self.containerElementCache) {
+            [self.containerElementCache addObject:[NSMutableArray new]];
+        }
         
         // validate the item index
         itemIndex++;
@@ -665,9 +675,37 @@ static NSDateFormatter *m_dateFormatter = nil;
         }
     }
     
+    //
+    // if MaxVerticalSpace defined then check if layout fits in defined vertical space.
+    // if not, adjust the layout so that it does.
+    //
+    if (attrMaxVerticalSpace && aggregatorStack.count > 0) {
+        CGFloat maxVerticalSpace  = [self numberFromString:attrMaxVerticalSpace.stringValue].floatValue * self.geometryAttributeScale;
+        
+        // get usage as recorded by aggregator
+        TSPageSpacingAggregator *aggregator = [aggregatorStack tspb_stackPeek];
+        NSXMLNode *attr = [xe attributeForName:@"Text.Y"];
+        CGFloat textY  = attr ? [self numberFromString:attr.stringValue].floatValue : 0;
+        CGFloat usage = (aggregator.base - textY) * self.geometryAttributeScale;
+
+        // if usage is excessive then adjust layout
+        if (usage > maxVerticalSpace && self.containerElementCache.count > 0) {
+            
+            CGFloat delta = (usage - maxVerticalSpace) / self.containerElementCache.count;
+            for (int i = 1; i < self.containerElementCache.count; i++) {
+                for (TSPageItem *pageItem in self.containerElementCache[i]) {
+                    NSRect rect = pageItem.containerRect;
+                    rect.origin.y -= (delta * i);
+                    pageItem.containerRect = rect;
+                }
+            }
+        }
+    }
+    
+    self.containerElementCache = nil;
+    
     // pop the aggregator
     [aggregatorStack tspb_pop];
-    
 }
 
 - (void)layoutTextualElement:(NSXMLElement *)xe withObject:(id)object
@@ -1500,6 +1538,11 @@ static NSDateFormatter *m_dateFormatter = nil;
     [item doLayout];
     
     [self.pageItems addObject:item];
+    
+    // if we have a container cache active then cache our item
+    if (self.containerElementCache) {
+        [self.containerElementCache.lastObject addObject:item];
+    }
 }
 
 #pragma mark -

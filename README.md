@@ -242,6 +242,11 @@ __Text.YSpacing__ - Y spacing between elements rendered within a `ForEach` eleme
 		<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="10">
 		...
 
+__MaxVerticalSpace__ - Max vertical space available to elements rendered within a `ForEach` element using `Text.YSpacing`. If the initial layout exceeds the MaxVerticalSpace then the spacing is adjusted to fit the elements into the defined vertical space.
+
+		<ForEach Enumerable="Box4Details" Text.Y="98.491" Text.YSpacing="1.25" MaxVerticalSpace="100">
+		...
+
 __Value__ - The value of an attribute to be pushed as part of a `Push`.
 
 		<Push Property="FontFamily" Value="Helvetica" />

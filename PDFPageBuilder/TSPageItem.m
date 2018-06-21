@@ -86,7 +86,7 @@
 
 - (void)doLayout
 {
-    // subclasse override must call this
+    // subclass override must call this
     self.needsLayout = NO;
 }
 
