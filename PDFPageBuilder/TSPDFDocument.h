@@ -66,6 +66,6 @@ typedef NS_ENUM(NSInteger, TSPageSize) {
  Returns a print operation suitable for printing the PDF document.
  
  */
-- (nonnull NSPrintOperation *)printOperationWithSettings:(nonnull NSDictionary *)printSettings;
+- (nullable NSPrintOperation *)printOperationWithSettings:(nonnull NSDictionary *)printSettings;
 
 @end
