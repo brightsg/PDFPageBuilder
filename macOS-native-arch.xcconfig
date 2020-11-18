@@ -1,0 +1,11 @@
+//
+//  macOS-native-arch.xcconfig
+//  PDFPageBuilder
+//
+//  Created by Jonathan Mitchell on 18/11/2020.
+//  Copyright © 2020 Thesaurus Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+ARCHS=$(NATIVE_ARCH_ACTUAL)

@@ -145,6 +145,7 @@
 		ABF40C111A49B8D30070368E /* TSPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPDFPage.h; sourceTree = "<group>"; };
 		ABF40C121A49B8D30070368E /* TSPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPDFPage.m; sourceTree = "<group>"; };
 		ABF40C321A49B8FA0070368E /* PDFPageBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFPageBuilder.h; sourceTree = "<group>"; };
+		ABFDF33125656E7300FCFE3F /* macOS-native-arch.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "macOS-native-arch.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +186,7 @@
 		ABD251791A4994DD00BB4BFC = {
 			isa = PBXGroup;
 			children = (
+				ABFDF33125656E7300FCFE3F /* macOS-native-arch.xcconfig */,
 				ABF40BF21A49B8D30070368E /* PDFPageBuilder */,
 				ABD251DA1A49969C00BB4BFC /* Cocoa.framework */,
 				ABD251921A4994DD00BB4BFC /* PDFPageBuilderTests */,
@@ -452,6 +454,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -640,6 +643,7 @@
 		};
 		ABD251981A4994DD00BB4BFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABFDF33125656E7300FCFE3F /* macOS-native-arch.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
