@@ -13,6 +13,12 @@
 
 #define TSPB_SCALE_MM_TO_PTS (72/25.4)
 
+
+#define TSLogWarn(fmt,...) NSLog(fmt, ##__VA_ARGS__)
+#define TSLogVerbose(fmt,...) if (TSPageBuilder.logVerbose) TSLog(__FILE__,__LINE__,__PRETTY_FUNCTION__, fmt, ##__VA_ARGS__)
+
+void TSLog(const char *file, int lineNumber, const char *functionName, NSString *format, ...);
+
 // map keys
 extern NSString *TSKeyYIncrement;
 extern NSString *TSKeyYSpacing;
@@ -65,6 +71,13 @@ extern NSString *TSKeyProperty;
  
  */
 - (BOOL)validateStringForPageBuilder:(TSPageBuilder *)pageBuilder string:(NSString *)string;
+
+/*!
+ 
+  Called prior to layout.
+ 
+ */
+- (void)pageBuilder:(TSPageBuilder *)pageBuilder willLayoutForElement:(NSXMLElement *)element withObject:(id)object;
 
 @end
 
@@ -136,6 +149,13 @@ extern NSString *TSKeyProperty;
  
  */
 @property (assign) NSPoint layoutOffset;
+
+/*!
+ 
+ Enable verbose logging
+ 
+ */
+@property (assign, class) BOOL logVerbose;
 
 /*!
  

@@ -44,16 +44,6 @@
 #import "NSRegularExpression+PageBuilder.h"
 #import "NSXMLElement+PageBuilder.h"
 
-// Uncomment TS_LOG_VERBOSE to enable verbose logging
-//#define TS_LOG_VERBOSE
-
-#define TSLogWarn(fmt,...) NSLog(fmt, ##__VA_ARGS__)
-#ifdef TS_LOG_VERBOSE
-#define TSLogVerbose(fmt,...) NSLog(fmt, ##__VA_ARGS__)
-#else
-#define TSLogVerbose(fmt,...)
-#endif
-
 NSString *TSKeyYIncrement = @"YIncrement";
 NSString *TSKeyYSpacing = @"YSpacing";
 
@@ -91,6 +81,21 @@ typedef NS_ENUM(NSInteger, TSStyleNameID) {
     TSStyleLineHeight,
     TSStyleForeground,
 };
+
+void TSLog(const char *file, int lineNumber, const char *functionName, NSString *format, ...)
+{
+    va_list ap;
+    va_start (ap, format);
+
+    if (![format hasSuffix: @"\n"]) {
+        format = [format stringByAppendingString: @"\n"];
+    }
+    NSString *body = [[NSString alloc] initWithFormat:format arguments:ap];
+    va_end (ap);
+     
+    NSString *fileName = [[NSString stringWithUTF8String:file] lastPathComponent];
+    fprintf(stderr, "(%s) (%s:%d) %s", functionName, [fileName UTF8String], lineNumber, [body UTF8String]);
+}
 
 @interface TSPageBuilder ()
 @property (strong) NSMutableDictionary *stacks;
@@ -406,6 +411,10 @@ static NSDateFormatter *m_dateFormatter = nil;
 
 - (NSArray *)addLayoutForElement:(NSXMLElement *)xeRoot withObject:(id)object
 {
+    if ([self.delegate respondsToSelector:@selector(pageBuilder:willLayoutForElement:withObject:)]) {
+        [self.delegate pageBuilder:self willLayoutForElement:xeRoot withObject:object];
+    }
+    
     return [self processPageForElement:xeRoot withObject:object options:@{@"doLayout" : @YES}];
 }
 
@@ -720,13 +729,16 @@ static NSDateFormatter *m_dateFormatter = nil;
 
     // get the attributed string representation of the element
     NSMutableAttributedString *attrString = [self attributedStringForNode:xe withObject:object];
-    
+    TSLogVerbose(@"Element (%p): %@ value : %@", xe, xe.name, attrString.string);
+                 
     // apply the Y aggregators if defined
     NSMutableArray *aggregatorStack = self.stacks[TSKeyYIncrement];
     if (aggregatorStack.count > 0) {
         
         TSPageDoubleAggregator *aggregator = [aggregatorStack tspb_stackPeek];
         double y = aggregator.base + aggregator.index * aggregator.multiplier;
+        
+        TSLogVerbose(@"Element (%p): %@ aggregator.base : %f aggregator.index %f aggregator.multiplier : %f Y %f", xe, xe.name, aggregator.base, aggregator.index, aggregator.multiplier, y);
         
         [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
         
@@ -737,6 +749,8 @@ static NSDateFormatter *m_dateFormatter = nil;
             TSPageSpacingAggregator *aggregator = [aggregatorStack tspb_stackPeek];
             double y = aggregator.base;
 
+            TSLogVerbose(@"Element (%p): %@ aggregator.base : %f Y : %f", xe, xe.name, aggregator.base, y);
+            
             [xe tspb_addAttributeWithName:@"Y" doubleValue:y];
         }
     }
@@ -748,13 +762,16 @@ static NSDateFormatter *m_dateFormatter = nil;
     if ([self stackHasValueForName:TSSKeyTextPadding]) {
         NSDictionary *dict = [self.stacks[TSSKeyTextPadding] tspb_stackPeek];
         
+        TSLogVerbose(@"Element (%p): %@ element rect padded from : %@", xe, xe.name, NSStringFromRect(elementRect));
+        
         // NOTE: top and bottom are interpreted in the normal sense independent of the flipped co-ordinate context
         elementRect.origin.x += [dict[@"left"] doubleValue];
         elementRect.origin.y += [dict[@"top"] doubleValue];
         elementRect.size.width -= ([dict[@"left"] doubleValue] + [dict[@"right"] doubleValue]);
         elementRect.size.height -= ([dict[@"bottom"] doubleValue] + [dict[@"top"] doubleValue]);
+        
+        TSLogVerbose(@"Element (%p): %@ element rect padded to : %@", xe, xe.name, NSStringFromRect(elementRect));
     }
-    
 
     // add the item
     TSPageTextItem *textItem = [self addTextItem:attrString rect:elementRect];
@@ -768,6 +785,8 @@ static NSDateFormatter *m_dateFormatter = nil;
         
         if (usage > aggregator.usage) {
             aggregator.usage = usage;
+            
+            TSLogVerbose(@"Element (%p): %@ aggregator.usage : %f", xe, xe.name, aggregator.usage);
         }
     }
     
@@ -1176,6 +1195,18 @@ static NSDateFormatter *m_dateFormatter = nil;
 #pragma mark -
 #pragma mark Accessors
 
+static BOOL m_logVerbose = NO;
+
++ (BOOL)logVerbose
+{
+    return m_logVerbose;
+}
+
++ (void)setLogVerbose:(BOOL)value
+{
+    m_logVerbose = value;
+}
+
 - (NSRegularExpression *)propertyRegex
 {
     if (!_propertyRegex) {
@@ -1297,7 +1328,7 @@ static NSDateFormatter *m_dateFormatter = nil;
                 components = [value componentsSeparatedByCharactersInSet:separatorSet];
                 
                 if (components.count != 4) {
-                    NSLog(@"Invalid number of value comoponents (%li) for key : %@", components.count, key);
+                    NSLog(@"Invalid number of value components (%li) for key : %@", components.count, key);
                     return;
                 }
                 
@@ -1490,6 +1521,8 @@ static NSDateFormatter *m_dateFormatter = nil;
     
     NSRect rect = NSMakeRect(x, y , width, height);
     
+    TSLogVerbose(@"Element (%p) Type : %@ xAttr : %@ yAttr : %@ rect : %@", xe, xe.name, xAttr.stringValue, yAttr.stringValue, NSStringFromRect(rect));
+                 
     return rect;
 }
 
