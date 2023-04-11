@@ -202,6 +202,12 @@
     [self.pageBuilder loadElement:xmlDoc.rootElement];
 }
 
+/// On macOS 13.3 this private method gets called and leads to a recursive stack call.
+/// All we can do is override here.
+- (void)getAnnotations
+{
     
+}
+
 @end
 
